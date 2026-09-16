@@ -20,8 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -104,7 +104,7 @@
                 <input type="email" id="ag-email" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500 mb-4">
                 <label class="block text-xs font-medium text-slate-400 mb-1.5">Contrasenya</label>
                 <input type="password" id="ag-password" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500">
-                <button id="ag-submit" onclick="agSubmit()" class="w-full mt-6 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Inicia sessió</button>
+                <button id="ag-submit" onclick="agSubmit()" class="w-full mt-6 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Inicia sessió</button>
                 <p class="text-center text-xs text-slate-500 mt-4">
                     <a onclick="agForgotPassword()" class="text-granate-400 hover:text-granate-300 cursor-pointer font-semibold">Has oblidat la contrasenya?</a>
                 </p>
@@ -127,7 +127,7 @@
                 <input type="password" id="sp-password" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500 mb-4">
                 <label class="block text-xs font-medium text-slate-400 mb-1.5">Repeteix-la</label>
                 <input type="password" id="sp-password-2" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500">
-                <button id="sp-submit" onclick="submitSetPassword()" class="w-full mt-6 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Confirma i entra</button>
+                <button id="sp-submit" onclick="submitSetPassword()" class="w-full mt-6 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Confirma i entra</button>
                 <div id="sp-msg" class="mt-4"></div>
             </div>
         </div>
@@ -178,7 +178,7 @@
             </select>
             <p class="text-[11px] text-slate-500 mb-5">Nomes jugadors que ja han entrat almenys una vegada amb el seu compte apareixen aquí.</p>
 
-            <button onclick="saveAppConfig()" id="cfg-save-btn" class="w-full bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Desa la configuració</button>
+            <button onclick="saveAppConfig()" id="cfg-save-btn" class="w-full bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg py-2.5 transition-all">Desa la configuració</button>
             <div id="cfg-msg" class="mt-3"></div>
         </div>
     </div>
@@ -209,7 +209,7 @@
             <input type="text" id="add-team-nom" placeholder="p. ex. Juvenil A" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 mb-5">
             <div class="flex gap-2">
                 <button onclick="closeAddTeamModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
-                <button onclick="submitAddTeam()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Crea</button>
+                <button onclick="submitAddTeam()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Crea</button>
             </div>
             <div id="add-team-msg" class="mt-3"></div>
         </div>
@@ -225,7 +225,7 @@
             <input type="text" id="edit-team-equip-nom" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 mb-5">
             <div class="flex gap-2 mb-3">
                 <button onclick="closeEditTeamModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
-                <button onclick="submitEditTeam()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa</button>
+                <button onclick="submitEditTeam()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa</button>
             </div>
             <button onclick="submitDeleteTeam()" class="w-full py-2.5 border border-rose-900 text-rose-400 hover:bg-rose-950/40 text-xs font-bold rounded-lg">Elimina aquest equip (irreversible)</button>
             <div id="edit-team-msg" class="mt-3"></div>
@@ -244,7 +244,7 @@
             </div>
             <p class="text-sm text-slate-400 mb-6">Tots els clubs i equips que existeixen a l'aplicatiu.</p>
 
-            <button onclick="openAdminCreateClub()" class="mb-6 inline-flex items-center gap-1.5 px-4 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg"><i data-lucide="plus" class="w-4 h-4"></i>Crea un club nou</button>
+            <button onclick="openAdminCreateClub()" class="mb-6 inline-flex items-center gap-1.5 px-4 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg"><i data-lucide="plus" class="w-4 h-4"></i>Crea un club nou</button>
 
             <div id="admin-teams-list" class="space-y-2"></div>
         </div>
@@ -262,7 +262,7 @@
             <input type="date" id="gen-sessions-end" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 mb-5">
             <div class="flex gap-2">
                 <button onclick="closeGenSessionsModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
-                <button onclick="generateWeeklySessions()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Genera</button>
+                <button onclick="generateWeeklySessions()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Genera</button>
             </div>
             <div id="gen-sessions-msg" class="mt-3"></div>
         </div>
@@ -293,7 +293,7 @@
             <p class="text-[11px] text-slate-500 mb-5">Quedaràs tu com a coordinador inicial — podràs convidar el coordinador real des del llistat un cop creat.</p>
             <div class="flex gap-2">
                 <button onclick="closeAdminCreateClub()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
-                <button onclick="submitAdminCreateClub()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Crea</button>
+                <button onclick="submitAdminCreateClub()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Crea</button>
             </div>
             <div id="admin-cc-msg" class="mt-3"></div>
         </div>
@@ -320,7 +320,7 @@
             <p class="text-[11px] text-slate-500 mb-5">Se li enviarà un correu amb un enllaç perquè triï la seva pròpia contrasenya i entri directament.</p>
             <div class="flex gap-2">
                 <button onclick="closeAdminInviteModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
-                <button onclick="submitAdminInvite()" id="admin-invite-submit" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Envia la invitació</button>
+                <button onclick="submitAdminInvite()" id="admin-invite-submit" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Envia la invitació</button>
             </div>
             <div id="admin-invite-msg" class="mt-3"></div>
         </div>
@@ -560,7 +560,7 @@
                         des de cada secció del menú.
                     </p>
 
-                    <button onclick="startFreshTeam()" class="mt-8 w-full bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-2xl py-4 transition-all flex items-center justify-center gap-2">
+                    <button onclick="startFreshTeam()" class="mt-8 w-full bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-2xl py-4 transition-all flex items-center justify-center gap-2">
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         Entra al tauler
                     </button>
@@ -652,7 +652,7 @@
                 <div id="squad-kpis" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
 
                 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    <div class="xl:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden flex flex-col">
+                    <div class="xl:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden flex flex-col">
                         <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div>
                                 <h4 class="font-bold text-white text-base">Fitxa de la plantilla</h4>
@@ -665,7 +665,7 @@
                                     <button id="squad-view-cards-btn" onclick="setSquadView('cards')" title="Vista de targetes" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i></button>
                                     <button id="squad-view-table-btn" onclick="setSquadView('table')" title="Vista de taula" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
                                 </div>
-                                <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
+                                <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
                             </div>
                         </div>
                         <div class="coach-only px-6 py-2.5 border-b border-slate-800/60 flex items-center justify-end">
@@ -694,12 +694,12 @@
                     </div>
 
                     <div class="xl:col-span-1 space-y-6">
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <h4 class="font-bold text-white text-base">Repartiment per posicio</h4>
                             <p class="text-xs text-slate-400 mb-4">Jugadors per demarcacio</p>
                             <div class="relative h-56"><canvas id="squadPositionChart"></canvas></div>
                         </div>
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <h4 class="font-bold text-white text-base mb-4">Per any de naixement</h4>
                             <div id="squad-years" class="space-y-2.5"></div>
                         </div>
@@ -707,7 +707,7 @@
                 </div>
 
                 <!-- Control d'assistència (mogut des de Control de càrregues) -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Control d'assistència</h4>
@@ -739,7 +739,7 @@
 
             <!-- 2 · ESTADISTICA -->
             <section id="tab-estadistica" class="tab-content hidden space-y-6">
-                <div id="player-stats" class="player-only hidden bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div id="player-stats" class="player-only hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="relative overflow-hidden bg-gradient-to-br from-granate-950/80 via-slate-900 to-slate-900 border-b border-slate-800 p-6">
                         <span id="ph-watermark" class="pointer-events-none select-none absolute -right-3 -top-8 text-[120px] font-black text-white/[0.04] leading-none"></span>
                         <div class="relative flex items-center gap-4">
@@ -843,7 +843,7 @@
                     </div>
                 </div>
                 <div class="coach-only space-y-6">
-                <div id="stats-missing" class="hidden bg-slate-900/60 border border-slate-800/80 rounded-2xl p-10 text-center">
+                <div id="stats-missing" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-10 text-center">
                     <div class="inline-flex p-3 bg-slate-800/60 text-slate-400 rounded-xl mb-4"><i data-lucide="bar-chart-2" class="w-6 h-6"></i></div>
                     <p class="text-sm font-semibold text-slate-200">No s'ha pogut llegir la pestanya <span class="text-emerald-400">Estadistica</span></p>
                     <p class="text-xs text-slate-400 mt-2 max-w-md mx-auto leading-relaxed">Cal que mantingui els blocs originals: CALENDARI (JORNADA / DATA / RIVAL / CAMP / RESULTAT), el RESUM DE LA TEMPORADA encapcalat per NOM i les graelles per jornada.</p>
@@ -852,7 +852,7 @@
                 <div id="stats-wrapper" class="hidden space-y-6">
                     <div id="stats-kpis" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5"></div>
 
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                         <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div>
                                 <h4 class="font-bold text-white text-base">Calendari de competicio</h4>
@@ -872,7 +872,7 @@
                     </div>
 
                     <!-- MILLORA 3: Selector d'estadístiques de jugadors vs equip -->
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                         <div class="inline-flex bg-slate-950 border border-slate-800 rounded-lg p-0.5 text-[11px] font-bold">
                             <button onclick="setStatsMode('players')" id="stats-view-players" class="coach-only px-3 py-1.5 rounded-md transition-all bg-granate-500 text-slate-950 shadow">Jugadors</button>
                             <button onclick="setStatsMode('team')" id="stats-view-team" class="px-3 py-1.5 rounded-md transition-all text-slate-400 hover:text-slate-100">Equip</button>
@@ -881,7 +881,7 @@
 
                     <!-- Vista estadístiques jugadors -->
                     <div id="stats-players-view" class="coach-only grid grid-cols-1 xl:grid-cols-3 gap-6">
-                        <div class="xl:col-span-2 bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl">
+                        <div class="xl:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] p-6 rounded-2xl">
                             <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                                 <div>
                                     <h4 class="font-bold text-white text-base">Comparativa de la plantilla</h4>
@@ -891,7 +891,7 @@
                             </div>
                             <div class="relative h-[26rem]"><canvas id="statsChart"></canvas></div>
                         </div>
-                        <div class="xl:col-span-1 bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl">
+                        <div class="xl:col-span-1 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] p-6 rounded-2xl">
                             <h4 class="font-bold text-white text-base">Ranquing</h4>
                             <p class="text-xs text-slate-400 mb-4" id="stats-rank-label"></p>
                             <div id="stats-ranking" class="space-y-3"></div>
@@ -899,7 +899,7 @@
                     </div>
 
                     <!-- Resum de temporada + Detall per jornada, integrats en un sol bloc -->
-                    <div id="stats-players-detail" class="coach-only bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                    <div id="stats-players-detail" class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                         <div class="p-6 border-b border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div>
                                 <h4 class="font-bold text-white text-base">Resum i detall de la temporada</h4>
@@ -945,7 +945,7 @@
                 <div class="flex justify-end">
                     <button onclick="exportSeasonPDF()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold rounded-lg flex items-center gap-1.5"><i data-lucide="file-down" class="w-3.5 h-3.5 text-emerald-400"></i>Informe de temporada (PDF)</button>
                 </div>
-                <div id="danger-windows-card" class="hidden bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5">
+                <div id="danger-windows-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="alarm-clock" class="w-4 h-4 text-rose-400"></i>Finestres de perill</p>
                         <span id="danger-windows-count" class="text-[10px] text-slate-500"></span>
@@ -954,7 +954,7 @@
                     <div class="relative h-56"><canvas id="dangerWindowsChart"></canvas></div>
                     <p id="danger-windows-inf-note" class="text-[9px] text-slate-600 mt-2"></p>
                 </div>
-                <div id="season-form-card" class="hidden bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5">
+                <div id="season-form-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>Forma recent</p>
                         <div id="season-form-strip" class="flex items-center gap-1"></div>
@@ -966,7 +966,7 @@
                     <!-- MILLORA 3: Vista estadístiques d'equip -->
                     <div id="stats-team-view" class="hidden space-y-6">
                         <!-- Dinàmica de gols -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                                     <i data-lucide="trending-up" class="w-4 h-4"></i>
@@ -984,7 +984,7 @@
                         </div>
 
                         <!-- Estadístiques d'equip per minuts -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
                                     <i data-lucide="clock" class="w-4 h-4"></i>
@@ -1008,7 +1008,7 @@
                         </div>
 
                         <!-- Tendències i dinàmiques -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
                                     <i data-lucide="activity" class="w-4 h-4"></i>
@@ -1019,7 +1019,7 @@
                         </div>
 
                         <!-- Impacte a pista (+/-) -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-1">
                                 <div class="w-9 h-9 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400"><i data-lucide="scale" class="w-4 h-4"></i></div>
                                 <h4 class="font-bold text-white text-base">Impacte a pista (+/&minus;)</h4>
@@ -1033,7 +1033,7 @@
                         </div>
 
                         <!-- Química de parelles i trios -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
                                 <div class="flex items-center gap-3">
                                     <div class="w-9 h-9 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400"><i data-lucide="users" class="w-4 h-4"></i></div>
@@ -1049,7 +1049,7 @@
                         </div>
 
                         <!-- On/off (impacte real a pista) -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-1">
                                 <div class="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400"><i data-lucide="arrow-left-right" class="w-4 h-4"></i></div>
                                 <h4 class="font-bold text-white text-base">On/off &middot; impacte real</h4>
@@ -1059,7 +1059,7 @@
                         </div>
 
                         <!-- Rendiment segons el marcador -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-1">
                                 <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400"><i data-lucide="git-compare" class="w-4 h-4"></i></div>
                                 <h4 class="font-bold text-white text-base">Rendiment segons el marcador</h4>
@@ -1070,7 +1070,7 @@
                         </div>
 
                         <!-- Tipologia de gol -->
-                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-1">
                                 <div class="w-9 h-9 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400"><i data-lucide="target" class="w-4 h-4"></i></div>
                                 <h4 class="font-bold text-white text-base">Tipologia de gol</h4>
@@ -1085,28 +1085,28 @@
 
             <!-- 2b · COMPETICIÓ INTERNA -->
             <section id="tab-competicio" class="tab-content hidden space-y-6">
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 sm:p-5">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4 sm:p-5">
                     <div class="flex items-center gap-2 flex-wrap">
                         <div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0"><i data-lucide="list-checks" class="w-4 h-4"></i></div>
                         <select id="comp-selector" onchange="setActiveComp(this.value)" class="flex-1 min-w-0 sm:flex-none sm:min-w-[200px] bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-amber-500"></select>
                         <div class="coach-only flex items-center gap-1.5 flex-wrap">
-                            <button onclick="addCompetition()" class="inline-flex items-center gap-1.5 px-3 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-xl transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Nova competició</span></button>
+                            <button onclick="addCompetition()" class="inline-flex items-center gap-1.5 px-3 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-xl transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Nova competició</span></button>
                             <button onclick="renameCompetition()" title="Reanomena" class="w-9 h-9 shrink-0 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-all"><i data-lucide="pencil" class="w-4 h-4"></i></button>
                             <button onclick="deleteCompetition()" title="Elimina" class="w-9 h-9 shrink-0 rounded-xl bg-slate-800 border border-slate-700 hover:bg-rose-900/40 hover:border-rose-800 flex items-center justify-center text-slate-300 hover:text-rose-400 transition-all"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
                         </div>
                     </div>
                 </div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="flex items-center justify-between gap-3 p-5 border-b border-slate-800">
                         <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center text-granate-400"><i data-lucide="scroll-text" class="w-4 h-4"></i></div><p class="text-sm font-bold text-white">Normativa de la competició</p></div>
                         <button onclick="editCompRules()" class="coach-only px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="pencil" class="w-3.5 h-3.5"></i>Edita</button>
                     </div>
                     <div class="p-5"><p id="comp-rules" class="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed"></p></div>
                 </div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="flex items-center justify-between gap-3 p-5 border-b border-slate-800">
                         <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400"><i data-lucide="trophy" class="w-4 h-4"></i></div><p class="text-sm font-bold text-white">Classificació</p></div>
-                        <button onclick="addCompRound()" class="coach-only px-3 py-1.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Afegeix puntuació</button>
+                        <button onclick="addCompRound()" class="coach-only px-3 py-1.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Afegeix puntuació</button>
                     </div>
                     <div id="comp-podium" class="hidden p-5 pb-2 border-b border-slate-800/60"></div>
                     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-slate-950/60 text-[10px] uppercase tracking-wider text-slate-400"><tr><th class="p-4 text-center font-semibold w-14">#</th><th class="p-4 text-left font-semibold">Jugador</th><th class="p-4 text-center font-semibold">Punts</th></tr></thead><tbody id="comp-rank-body" class="divide-y divide-slate-800/60"></tbody></table></div>
@@ -1149,7 +1149,7 @@
                         </div>
                     </div>
 
-                    <div class="lg:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5">
+                    <div class="lg:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
                         <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
                             <div class="flex items-center gap-2.5">
                                 <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400"><i data-lucide="calendar-clock" class="w-4 h-4"></i></div>
@@ -1165,12 +1165,12 @@
 
                 <div class="flex flex-wrap items-center justify-between gap-3">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <div class="flex items-center gap-2 text-[11px] text-slate-400 bg-slate-900/60 border border-slate-800/80 rounded-xl px-4 py-2.5">
+                        <div class="flex items-center gap-2 text-[11px] text-slate-400 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-xl px-4 py-2.5">
                             <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Entrenament
                             <span class="w-2 h-2 rounded-full bg-cyan-500 ml-3"></span> Carrega baixa
                             <span class="w-2 h-2 rounded-full bg-indigo-500 ml-3"></span> Partit
                         </div>
-                        <div class="inline-flex items-center bg-slate-900/60 border border-slate-800/80 rounded-xl p-0.5">
+                        <div class="inline-flex items-center bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-xl p-0.5">
                             <button onclick="setCalView('list')" id="calview-list" class="px-2.5 py-2 rounded-lg text-xs font-bold transition-all inline-flex items-center gap-1.5" title="Vista de llista (contingut)"><i data-lucide="rows-3" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Llista</span></button>
                             <button onclick="setCalView('grid')" id="calview-grid" class="px-2.5 py-2 rounded-lg text-xs font-bold transition-all inline-flex items-center gap-1.5" title="Vista de quadrícula (mes)"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">Quadrícula</span></button>
                         </div>
@@ -1305,7 +1305,7 @@
             <!-- 4 · CONTROL DE CARREGUES -->
             <section id="tab-carregues" class="tab-content hidden space-y-6">
                 <!-- MILLORA 5: Selector de franja temporal -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
                         <label class="text-xs font-bold text-slate-400">Període de visualització:</label>
                         <div class="flex items-center gap-2 flex-wrap">
@@ -1319,7 +1319,7 @@
                 </div>
 
                 <!-- MILLORA 5: Càrrega individual per jugador (període seleccionat) -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                     <div class="flex items-center gap-2 mb-1"><span class="text-[9px] font-bold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-1.5 py-0.5 rounded">Període seleccionat</span></div>
                     <h4 class="font-bold text-white text-base mb-1">Càrrega del període seleccionat</h4>
                     <p class="text-xs text-slate-400 mb-4">UC acumulades i mitjana per sessió <strong class="text-slate-300">dins la franja de dates triada a dalt</strong> (entrenaments amb assistència P/R + partits). Ordenat per UC total.</p>
@@ -1338,7 +1338,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <div class="lg:col-span-2 bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl">
+                    <div class="lg:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] p-6 rounded-2xl">
                         <h4 class="font-bold text-white text-base">Carrega i intensitat per sessio</h4>
                         <p class="text-xs text-slate-400 mb-4">Barres: UC &middot; Linia: RPE planificat</p>
                         <div class="flex items-center gap-4 mb-2 px-1 text-[11px] font-semibold">
@@ -1354,7 +1354,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="lg:col-span-1 bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl">
+                    <div class="lg:col-span-1 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] p-6 rounded-2xl">
                         <div class="flex justify-between items-start mb-4">
                             <div>
                                 <h4 class="font-bold text-white text-base">Carrega per microcicle</h4>
@@ -1373,7 +1373,7 @@
                     </div>
                 </div>
 
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Totes les sessions</h4>
@@ -1418,7 +1418,7 @@
                 <div id="model-detail-view" class="hidden space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- MILLORA 6: Continguts ofensius amb plegar/desplegar -->
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden transition-all">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden transition-all">
                         <div class="p-6 border-b border-slate-800">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-2">
@@ -1434,7 +1434,7 @@
                         <div class="p-6 space-y-4 transition-all" id="model-ofensivo-list"></div>
                     </div>
                     <!-- MILLORA 6: Continguts defensius amb plegar/desplegar -->
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden transition-all">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden transition-all">
                         <div class="p-6 border-b border-slate-800">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-2">
@@ -1451,7 +1451,7 @@
                     </div>
                 </div>
                 <!-- MILLORA 6: Estratègia ABP amb plegar/desplegar -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden transition-all">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden transition-all">
                     <div class="p-6 border-b border-slate-800">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -1482,7 +1482,7 @@
                         <p class="text-[10px] font-bold uppercase tracking-wider text-granate-400">Preparació física</p>
                         <h3 class="text-lg font-extrabold text-white">Rutines de mobilitat i activació</h3>
                     </div>
-                    <button onclick="addRutina()" class="coach-only px-4 py-2 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Afegeix rutina</button>
+                    <button onclick="addRutina()" class="coach-only px-4 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Afegeix rutina</button>
                 </div>
                 <div id="rutines-list" class="space-y-4"></div>
             </section>
@@ -1497,7 +1497,7 @@
                     </select>
                     <p class="text-[10px] text-slate-600 basis-full">A més de tu, aquest jugador podrà afegir, marcar com a pagades i eliminar multes.</p>
                 </div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <button onclick="toggleFineRulebookCard()" class="w-full flex items-center justify-between gap-3 p-5 border-b border-slate-800 text-left hover:bg-slate-900/40 transition-all">
                         <div class="flex items-center gap-3 min-w-0"><div class="w-9 h-9 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center text-granate-400 shrink-0"><i data-lucide="scroll-text" class="w-4 h-4"></i></div><div class="min-w-0"><p class="text-sm font-bold text-white">Constitució CFSE SAM 26-27</p><p class="text-[10px] text-slate-500">Normativa oficial de multes de l'equip</p></div></div>
                         <i id="fine-rulebook-card-chevron" data-lucide="chevron-down" class="w-4 h-4 text-slate-500 shrink-0 transition-transform"></i>
@@ -1509,14 +1509,14 @@
                         <div id="fine-rulebook" class="p-4 space-y-2.5"></div>
                     </div>
                 </div>
-                <div id="fine-notes-card" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div id="fine-notes-card" class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="flex items-center justify-between gap-3 p-5 border-b border-slate-800">
                         <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-slate-500/10 border border-slate-500/30 flex items-center justify-center text-slate-400"><i data-lucide="sticky-note" class="w-4 h-4"></i></div><p class="text-sm font-bold text-white">Notes addicionals</p></div>
                         <button id="fine-rules-edit-btn" onclick="editFineRules()" class="hidden px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg items-center gap-1.5 transition-all"><i data-lucide="pencil" class="w-3.5 h-3.5"></i>Edita</button>
                     </div>
                     <div class="p-5"><p id="fine-rules" class="text-sm text-slate-300 whitespace-pre-wrap leading-relaxed"></p></div>
                 </div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="flex items-center justify-between gap-3 p-5 border-b border-slate-800">
                         <div class="flex items-center gap-3">
                             <div class="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400"><i data-lucide="gavel" class="w-4 h-4"></i></div>
@@ -1524,7 +1524,7 @@
                         </div>
                         <div class="flex items-center gap-2 shrink-0">
                             <span id="fines-sync-badge" class="hidden items-center gap-1.5 px-2 py-1 rounded-full bg-slate-950/60 border border-slate-800/70"><span id="fines-sync-dot" class="w-1.5 h-1.5 rounded-full bg-slate-600 shrink-0"></span><span id="fines-sync-text" class="text-[9px] font-medium text-slate-400 whitespace-nowrap"></span></span>
-                        <button id="fine-add-btn" onclick="addFine()" class="hidden px-3 py-1.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Afegeix multa</button>
+                        <button id="fine-add-btn" onclick="addFine()" class="hidden px-3 py-1.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Afegeix multa</button>
                         <button id="fine-pdf-btn" onclick="exportFinesPDF()" title="Descarrega un resum en PDF per compartir" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="file-down" class="w-3.5 h-3.5"></i><span class="hidden sm:inline">PDF</span></button>
                         </div>
                     </div>
@@ -1537,7 +1537,7 @@
 
                 <!-- CONTEXT DEL PARTIT -->
                 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    <div class="xl:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                    <div class="xl:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                         <div class="flex items-center justify-between gap-3 mb-5">
                             <h4 class="font-bold text-white text-base">Context del partit</h4>
                             <div class="flex items-center gap-3">
@@ -1592,7 +1592,7 @@
 
                 <!-- CRONÒMETRE + PISTA -->
                 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    <div class="xl:col-span-1 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 flex flex-col">
+                    <div class="xl:col-span-1 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6 flex flex-col">
                         <div class="flex items-center justify-between">
                             <h4 class="font-bold text-white text-base">Minut de partit</h4>
                             <span id="match-half-badge" class="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase bg-slate-800 text-slate-300"></span>
@@ -1695,7 +1695,7 @@
                         <p class="text-[9px] text-slate-500 mt-2.5 leading-relaxed">Fes clic a qualsevol minut per revisar-lo o corregir-ne l'alineació.</p>
                     </div>
 
-                    <div class="xl:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                    <div class="xl:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
                             <div>
                                 <h4 class="font-bold text-white text-base">Pista i banqueta</h4>
@@ -1711,7 +1711,7 @@
                 </div>
 
                 <!-- TAULA EN DIRECTE -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Dades del partit en directe</h4>
@@ -1740,7 +1740,7 @@
                 </div>
 
                 <!-- COMBINACIONS DE JUGADORS -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Millors combinacions de jugadors</h4>
@@ -1776,7 +1776,7 @@
 
                 <!-- CRONOLOGIA + EXPORTACIÓ -->
                 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    <div class="xl:col-span-1 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                    <div class="xl:col-span-1 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h4 class="font-bold text-white text-base">Cronologia</h4>
                             <div class="flex items-center gap-2">
@@ -1795,7 +1795,7 @@
                         <div id="timeout-impact"></div>
                     </div>
 
-                    <div class="xl:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6">
+                    <div class="xl:col-span-2 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                         <h4 class="font-bold text-white text-base">Exportar el partit</h4>
                         <p class="text-xs text-slate-400 mt-1 mb-5">Els jugadors surten en el mateix ordre que a l'Excel, així pots enganxar cada columna directament al bloc corresponent de la pestanya Estadística.</p>
 
@@ -1812,14 +1812,14 @@
                         <div id="copy-column-buttons" class="flex flex-wrap gap-2"></div>
 
                         <div class="mt-6 pt-5 border-t border-slate-800">
-                            <button onclick="openMatchArchiveModal()" class="w-full py-3 rounded-xl bg-granate-600 hover:bg-granate-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all"><i data-lucide="archive" class="w-4 h-4"></i>Tanca i arxiva el partit</button>
+                            <button onclick="openMatchArchiveModal()" class="w-full py-3 rounded-xl bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all"><i data-lucide="archive" class="w-4 h-4"></i>Tanca i arxiva el partit</button>
                             <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Desa tota la informació d'aquest partit i buida el panell per al següent.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- PARTITS ARXIVATS -->
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Partits arxivats</h4>
@@ -1833,7 +1833,7 @@
 
             <!-- 7 · VÍDEO -->
             <section id="tab-video" class="tab-content hidden space-y-6">
-                <div class="coach-only bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 md:p-6">
+                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5 md:p-6">
                     <div class="flex items-start gap-3">
                         <div class="shrink-0 p-2.5 bg-granate-500/10 text-granate-400 rounded-xl"><i data-lucide="clapperboard" class="w-5 h-5"></i></div>
                         <div class="min-w-0">
@@ -1851,7 +1851,7 @@
                     </div>
                 </div>
 
-                <div class="coach-only bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-3">
+                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5 space-y-3">
                     <h4 class="font-bold text-white text-sm">Marca un moment</h4>
                     <p class="text-xs text-slate-400 leading-relaxed">Afegeix un moment amb el seu enllaç de YouTube, la categoria, els jugadors i una nota. Si has posat l'enllaç del partit a dalt, cada moment nou ja el porta i només hi has de posar el temps.</p>
                     <div class="flex flex-col sm:flex-row gap-2">
@@ -1860,7 +1860,7 @@
                     </div>
                 </div>
 
-                <div class="coach-only bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Moments destacats</h4>
@@ -1874,7 +1874,7 @@
                     <div id="markers-list" class="divide-y divide-slate-800/60"></div>
                 </div>
 
-                <div class="coach-only bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Partits arxivats</h4>
@@ -1900,7 +1900,7 @@
 
             <!-- 8 · SOCIOGRAMA -->
             <section id="tab-sociograma" class="tab-content hidden space-y-6">
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 md:p-6">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5 md:p-6">
                     <div class="flex items-start justify-between gap-3 flex-wrap">
                         <div class="flex items-start gap-3 min-w-0">
                             <div class="shrink-0 p-2.5 bg-granate-500/10 text-granate-400 rounded-xl"><i data-lucide="network" class="w-5 h-5"></i></div>
@@ -1927,10 +1927,10 @@
                         <p class="text-sm font-bold text-white">Els teus formularis</p>
                         <div class="flex items-center gap-1.5">
                             <button onclick="sgImportOpen()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="clipboard-paste" class="w-3.5 h-3.5 text-emerald-400"></i>Importar respostes</button>
-                            <button onclick="sgNewForm()" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Nou formulari</button>
+                            <button onclick="sgNewForm()" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all"><i data-lucide="plus" class="w-3.5 h-3.5"></i>Nou formulari</button>
                         </div>
                     </div>
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl px-4 py-3 flex items-center gap-3 flex-wrap">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl px-4 py-3 flex items-center gap-3 flex-wrap">
                         <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500 inline-flex items-center gap-1.5 shrink-0"><i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-400"></i>WhatsApp de recollida</label>
                         <input id="sg-whatsapp" type="tel" inputmode="tel" onchange="sgSetWhatsapp(this.value)" placeholder="34676717885" class="flex-1 min-w-[160px] bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500">
                         <span class="text-[11px] text-slate-500">Els jugadors enviaran aquí les respostes (prefix del país inclòs, sense +).</span>
@@ -1940,17 +1940,17 @@
 
                 <!-- VISTA: RECOLLIDA -->
                 <div id="sg-view-collect" class="coach-only hidden space-y-4">
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                         <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Formulari</label>
                         <select id="sg-collect-form" onchange="sgSelectCollectForm(this.value)" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></select>
                         <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">Toca un jugador per registrar o editar la seva resposta. També pots fer <button onclick="sgImportOpen()" class="text-emerald-400 hover:text-emerald-300 font-semibold underline underline-offset-2">importació en bloc</button> de les respostes que t'enviïn els jugadors.</p>
                     </div>
-                    <div id="sg-collect-body" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4"></div>
+                    <div id="sg-collect-body" class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4"></div>
                 </div>
 
                 <!-- VISTA: VISUALITZACIÓ -->
                 <div id="sg-view-viz" class="coach-only hidden space-y-4">
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 space-y-3">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4 space-y-3">
                         <div class="flex items-end gap-2 flex-wrap">
                             <div class="flex-1 min-w-[200px]">
                                 <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Formulari</label>
@@ -1967,7 +1967,7 @@
 
             <!-- 9 · CONVOCATÒRIES -->
             <section id="tab-convocatories" class="tab-content hidden space-y-6">
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 md:p-6">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5 md:p-6">
                     <div class="flex items-start justify-between gap-3 flex-wrap">
                         <div class="flex items-start gap-3 min-w-0">
                             <div class="shrink-0 p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl"><i data-lucide="clipboard-check" class="w-5 h-5"></i></div>
@@ -1985,7 +1985,7 @@
 
                 <!-- VISTA: PER JORNADA -->
                 <div id="conv-view-jornada" class="space-y-4">
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-3">
                             <div class="flex-1">
                                 <label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Jornada</label>
@@ -2009,13 +2009,13 @@
 
                 <!-- VISTA: HISTÒRIC -->
                 <div id="conv-view-historic" class="hidden space-y-4">
-                    <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+                    <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                         <div class="flex items-center justify-between gap-3 flex-wrap">
                             <p class="text-sm font-bold text-white">Històric de convocatòries</p>
                             <button onclick="convExport()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-granate-500 hover:bg-granate-600 text-slate-950 text-xs font-bold rounded-lg transition-all shrink-0"><i data-lucide="download" class="w-3.5 h-3.5"></i>Exporta</button>
                         </div>
                     </div>
-                    <div id="conv-historic-body" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 overflow-x-auto"></div>
+                    <div id="conv-historic-body" class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 overflow-x-auto"></div>
                 </div>
             </section>
         </div>
@@ -2064,7 +2064,7 @@
             </div>
             <div class="flex items-center justify-between gap-3 pt-2">
                 <button onclick="deleteMarker()" class="text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors">Elimina</button>
-                <button onclick="saveMarker()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all">Desa el moment</button>
+                <button onclick="saveMarker()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all">Desa el moment</button>
             </div>
         </div>
     </div>
@@ -2084,7 +2084,7 @@
                 <h2 id="pres-title" class="text-3xl md:text-4xl font-extrabold text-white leading-tight">—</h2>
                 <p id="pres-players" class="text-sm text-slate-300 mt-3 font-medium"></p>
                 <p id="pres-note" class="text-base text-slate-400 mt-4 leading-relaxed"></p>
-                <button onclick="presOpenLink()" id="pres-open" class="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-granate-900/40"><i data-lucide="play" class="w-5 h-5"></i>Obre a YouTube</button>
+                <button onclick="presOpenLink()" id="pres-open" class="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-granate-900/40"><i data-lucide="play" class="w-5 h-5"></i>Obre a YouTube</button>
             </div>
         </div>
         <div class="flex items-center justify-between gap-3 px-5 py-4 border-t border-slate-800">
@@ -2109,7 +2109,7 @@
             <p class="text-[11px] text-slate-500 leading-relaxed">En arxivar-lo, el panell quedarà buit i a punt per al següent partit. Podràs consultar-lo o reprendre'l des de «Partits arxivats».</p>
             <div class="flex items-center justify-end gap-3 pt-1">
                 <button onclick="closeArchiveModal()" class="px-4 py-2.5 text-slate-300 hover:text-white text-sm font-semibold transition-colors">Cancel·la</button>
-                <button onclick="confirmArchive()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all">Arxiva el partit</button>
+                <button onclick="confirmArchive()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all">Arxiva el partit</button>
             </div>
         </div>
     </div>
@@ -2130,7 +2130,7 @@
             <p class="text-[11px] text-slate-500 leading-relaxed">Es desaran totes les dades del partit (minuts, gols, cronologia…) i el panell quedarà buit per al següent. Podràs consultar-lo o reprendre'l des de «Partits arxivats».</p>
             <div class="flex items-center justify-end gap-3 pt-1">
                 <button onclick="closeMatchArchiveModal()" class="px-4 py-2.5 text-slate-300 hover:text-white text-sm font-semibold transition-colors">Cancel·la</button>
-                <button onclick="confirmMatchArchive()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all">Arxiva el partit</button>
+                <button onclick="confirmMatchArchive()" class="px-5 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all">Arxiva el partit</button>
             </div>
         </div>
     </div>
@@ -2165,7 +2165,7 @@
                         <input type="password" inputmode="numeric" id="pl-pin" onkeydown="if(event.key==='Enter')playerLogin()" class="mt-1.5 w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 tracking-[0.3em] focus:outline-none focus:ring-2 focus:ring-granate-500/40 focus:border-granate-500 transition-all">
                     </div>
                     <p id="pl-error" class="hidden text-xs font-semibold text-rose-400"></p>
-                    <button onclick="playerLogin()" class="w-full py-3.5 bg-granate-600 hover:bg-granate-700 active:scale-[0.99] text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-granate-950/40">Entra</button>
+                    <button onclick="playerLogin()" class="w-full py-3.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 active:scale-[0.99] text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-granate-950/40">Entra</button>
                 </div>
             </div>
         </div>
@@ -2176,7 +2176,7 @@
         <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-3">
             <p class="text-sm font-bold text-white">Normes de convivència</p>
             <textarea id="fine-rules-text" rows="8" class="w-full resize-none bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></textarea>
-            <div class="flex gap-2"><button onclick="saveFineRules()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="document.getElementById('fine-rules-modal').classList.add('hidden')" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
+            <div class="flex gap-2"><button onclick="saveFineRules()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="document.getElementById('fine-rules-modal').classList.add('hidden')" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
         </div>
     </div>
     <div id="fine-modal" class="coach-only hidden fixed inset-0 z-[65] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeFine()">
@@ -2185,7 +2185,7 @@
             <div><label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Jugador</label><select id="fine-player" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></select></div>
             <div><label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Motiu</label><input id="fine-concept" placeholder="p. ex. Arribar tard" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></div>
             <div><label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Import (&euro;)</label><input id="fine-amount" type="number" step="0.5" placeholder="0" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></div>
-            <div class="flex gap-2 pt-1"><button onclick="saveFine()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="closeFine()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
+            <div class="flex gap-2 pt-1"><button onclick="saveFine()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="closeFine()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
         </div>
     </div>
 
@@ -2259,7 +2259,7 @@
         <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-3">
             <p class="text-sm font-bold text-white">Normativa de la competició</p>
             <textarea id="comp-rules-text" rows="8" class="w-full resize-none bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500"></textarea>
-            <div class="flex gap-2"><button onclick="saveCompRules()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="document.getElementById('comp-rules-modal').classList.add('hidden')" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
+            <div class="flex gap-2"><button onclick="saveCompRules()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="document.getElementById('comp-rules-modal').classList.add('hidden')" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
         </div>
     </div>
     <div id="comp-round-modal" class="coach-only hidden fixed inset-0 z-[65] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeCompRound()">
@@ -2274,7 +2274,7 @@
                 <input type="checkbox" id="cr-noscore" onchange="toggleNoScore(this.checked)" class="accent-granate-600 w-4 h-4">
             </label>
             <div id="comp-round-fields" class="flex-1 min-h-0 overflow-y-auto space-y-1.5"></div>
-            <div class="flex gap-2 shrink-0"><button onclick="saveCompRound()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="closeCompRound()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
+            <div class="flex gap-2 shrink-0"><button onclick="saveCompRound()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa</button><button onclick="closeCompRound()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button></div>
         </div>
     </div>
 
@@ -2305,7 +2305,7 @@
                 </div>
             </div>
             <div class="flex gap-2 pt-1">
-                <button onclick="saveRutina()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all">Desa</button>
+                <button onclick="saveRutina()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all">Desa</button>
                 <button onclick="closeRutina()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition-all">Cancel&middot;la</button>
             </div>
         </div>
@@ -2345,7 +2345,7 @@
                 <p id="board-hint" class="text-center text-[11px] text-slate-500 mt-2"></p>
             </div>
             <div id="board-footer" class="p-3 border-t border-slate-800 flex gap-2">
-                <button onclick="saveBoardEditor()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg transition-all">Desa la pissarra</button>
+                <button onclick="saveBoardEditor()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg transition-all">Desa la pissarra</button>
                 <button onclick="closeBoardEditor()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition-all">Cancel&middot;la</button>
             </div>
         </div>
@@ -2379,7 +2379,7 @@
                 <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Grup de l&rsquo;equip</p>
                 <input type="text" id="wa-group" placeholder="Enllaç del grup (https://chat.whatsapp.com/...)" onchange="setWaGroup(this.value)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500">
                 <div class="flex gap-2">
-                    <button onclick="waOpenGroup()" class="flex-1 py-2 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="users" class="w-3.5 h-3.5"></i>Obre el grup</button>
+                    <button onclick="waOpenGroup()" class="flex-1 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="users" class="w-3.5 h-3.5"></i>Obre el grup</button>
                     <button onclick="copyGlobalMessage()" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copia missatge</button>
                 </div>
             </div>
@@ -2388,7 +2388,7 @@
     </div>
 
     <!-- ASSISTENT -->
-    <button id="assistant-fab" onclick="toggleAssistant()" aria-label="Assistent" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-granate-600 hover:bg-granate-700 shadow-xl shadow-granate-900/40 flex items-center justify-center text-white transition-all active:scale-95">
+    <button id="assistant-fab" onclick="toggleAssistant()" aria-label="Assistent" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 shadow-xl shadow-granate-900/40 flex items-center justify-center text-white transition-all active:scale-95">
         <i data-lucide="sparkles" class="w-6 h-6"></i>
     </button>
     <div id="assistant-panel" class="hidden fixed z-50 inset-x-0 bottom-0 md:inset-x-auto md:bottom-6 md:right-6 w-full md:w-[380px] h-[78vh] md:h-[600px] bg-slate-900 border border-slate-800 md:rounded-2xl shadow-2xl flex flex-col overflow-hidden">
@@ -2417,7 +2417,7 @@
                 <input type="password" id="assistant-key" placeholder="sk-ant-..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-granate-500">
                 <input type="text" id="assistant-model" placeholder="model (p. ex. claude-haiku-4-5)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-granate-500">
                 <div class="flex gap-2">
-                    <button onclick="saveClaudeKey()" class="flex-1 py-2 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg transition-all">Desa</button>
+                    <button onclick="saveClaudeKey()" class="flex-1 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg transition-all">Desa</button>
                     <button onclick="clearClaudeKey()" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition-all">Treu</button>
                 </div>
             </div>
@@ -2427,7 +2427,7 @@
             <div class="flex items-end gap-2">
                 <button id="assistant-mic" onclick="toggleDictation()" aria-label="Parla" class="w-10 h-10 shrink-0 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-all"><i data-lucide="mic" class="w-5 h-5"></i></button>
                 <textarea id="assistant-input" rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitAssistant();}" placeholder="Escriu o parla&hellip;" class="flex-1 resize-none bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-granate-500 max-h-24"></textarea>
-                <button onclick="submitAssistant()" aria-label="Envia" class="w-10 h-10 shrink-0 rounded-xl bg-granate-600 hover:bg-granate-700 flex items-center justify-center text-white transition-all"><i data-lucide="send" class="w-4 h-4"></i></button>
+                <button onclick="submitAssistant()" aria-label="Envia" class="w-10 h-10 shrink-0 rounded-xl bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 flex items-center justify-center text-white transition-all"><i data-lucide="send" class="w-4 h-4"></i></button>
             </div>
         </div>
     </div>
@@ -2502,7 +2502,7 @@
                 </div>
             </div>
             <div class="flex gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
-                <button onclick="sgSaveForm()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa el formulari</button>
+                <button onclick="sgSaveForm()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa el formulari</button>
                 <button onclick="sgCloseFormModal()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button>
             </div>
         </div>
@@ -2522,7 +2522,7 @@
             <div class="flex flex-wrap gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
                 <button onclick="sgFillSaveAndSend()" class="player-only flex-1 min-w-[160px] py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i>Envia per WhatsApp</button>
                 <button onclick="sgFillSave()" class="player-only py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Desa esborrany</button>
-                <button onclick="sgFillSave()" class="coach-only flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa la resposta</button>
+                <button onclick="sgFillSave()" class="coach-only flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Desa la resposta</button>
                 <button id="sg-fill-delete" onclick="sgFillDelete()" class="coach-only hidden py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 text-sm font-semibold rounded-lg">Esborra</button>
                 <button onclick="sgCloseFill()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Tanca</button>
             </div>
@@ -2546,7 +2546,7 @@
                 </div>
             </div>
             <div class="flex gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
-                <button onclick="sgImportRun()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Importar</button>
+                <button onclick="sgImportRun()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Importar</button>
                 <button onclick="sgImportClose()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Tanca</button>
             </div>
         </div>
@@ -4766,7 +4766,7 @@
     }
 
     const kpiCardHTML = c => `
-        <div class="bg-slate-900/60 border border-slate-800/80 p-5 rounded-2xl hover:border-slate-700/80 transition-all">
+        <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] p-5 rounded-2xl hover:border-slate-700/80 transition-all">
             <div class="flex justify-between items-start gap-3">
                 <div class="min-w-0">
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider truncate" title="${esc(c.label)}">${esc(c.label)}</p>
@@ -4821,7 +4821,7 @@
         const initials = (p.name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
         const rows = computePlayerEvolution(p.id);
         const t = rows.reduce((a, r) => ({ min: a.min + r.minutes, gols: a.gols + r.gols, assist: a.assist + r.assist }), { min: 0, gols: 0, assist: 0 });
-        return `<button onclick="openPlayerProfile('${esc(p.id)}')" class="squad-card group relative text-left bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 hover:border-granate-500/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-granate-950/20 transition-all duration-200 ${baixa ? 'opacity-50' : ''}">
+        return `<button onclick="openPlayerProfile('${esc(p.id)}')" class="squad-card group relative text-left bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4 hover:border-granate-500/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-granate-950/20 transition-all duration-200 ${baixa ? 'opacity-50' : ''}">
                 <div class="flex items-start justify-between mb-3">
                     <div class="relative w-12 h-12 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center font-black text-sm text-granate-300 shrink-0">
                         ${esc(initials)}
@@ -8984,7 +8984,7 @@
         if (!groups.length) {
             if (badge) badge.innerText = '';
             grid.className = '';
-            grid.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 text-center mt-4">
+            grid.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-8 text-center mt-4">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-slate-500 mb-3"><i data-lucide="film" class="w-6 h-6"></i></div>
                 <p class="text-sm text-slate-400">Encara no hi ha moments teus en cap partit arxivat.</p>
             </div>`;
@@ -9010,7 +9010,7 @@
                     <i data-lucide="play" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i>
                 </button>`;
             }).join('');
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden flex flex-col">
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden flex flex-col">
                 <div class="relative p-4 bg-gradient-to-br from-granate-950/60 via-slate-900 to-slate-900">
                     <div class="flex items-center gap-2.5">
                         <div class="w-10 h-10 rounded-xl bg-granate-500/15 border border-granate-500/30 flex items-center justify-center text-granate-300 shrink-0"><i data-lucide="clapperboard" class="w-4.5 h-4.5"></i></div>
@@ -9409,7 +9409,7 @@
     // Vista de llista SETMANAL: mostra una sola setmana (calWeekIdx) amb els seus dies.
     function weekListHTML() {
         const flat = allWeeksFlat();
-        if (!flat.length) return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-10 text-center text-xs text-slate-500">No hi ha setmanes per mostrar.</div>`;
+        if (!flat.length) return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-10 text-center text-xs text-slate-500">No hi ha setmanes per mostrar.</div>`;
         calWeekIdx = Math.max(0, Math.min(flat.length - 1, calWeekIdx));
         const { month, mIdx, week, wIdx } = flat[calWeekIdx];
         const labels = month.dayLabels.length === 7 ? month.dayLabels : ['DLL.', 'DM.', 'DMC.', 'DJ.', 'DV.', 'DSS.', 'DG.'];
@@ -9423,7 +9423,7 @@
             range = `${a.getDate()} ${MONTHS_CA[a.getMonth()].slice(0, 3)} – ${b.getDate()} ${MONTHS_CA[b.getMonth()].slice(0, 3)}`;
         }
 
-        let html = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 sm:p-5">
+        let html = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 sm:p-5">
             <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
                 <div>
                     <h4 class="font-bold text-white text-base">${esc(month.title)}</h4>
@@ -9456,7 +9456,7 @@
     // de color si té sessió. Manté la graella de 7 columnes també en mòbil.
     function monthGridHTML(month, mIdx) {
         const labels = month.dayLabels.length === 7 ? month.dayLabels : ['DLL.', 'DM.', 'DMC.', 'DJ.', 'DV.', 'DSS.', 'DG.'];
-        let html = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-2.5 sm:p-5">
+        let html = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-2.5 sm:p-5">
             <div class="flex items-center justify-between gap-3 mb-4 flex-wrap">
                 <h4 class="font-bold text-white text-base">${esc(month.title)}</h4>
             </div>
@@ -9583,13 +9583,13 @@
 
     function fallbackCalendarHTML() {
         const ds = state.sessions.map(s => s.date).filter(Boolean);
-        if (!ds.length) return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-10 text-center text-xs text-slate-500">No hi ha dates per dibuixar el calendari.</div>`;
+        if (!ds.length) return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-10 text-center text-xs text-slate-500">No hi ha dates per dibuixar el calendari.</div>`;
         const min = new Date(Math.min(...ds)), max = new Date(Math.max(...ds));
         const start = new Date(min); start.setDate(min.getDate() - ((min.getDay() + 6) % 7));
         const labels = ['DLL.', 'DM.', 'DMC.', 'DJ.', 'DV.', 'DSS.', 'DG.'];
         const fullLabels = ['Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte', 'Diumenge'];
 
-        let html = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 sm:p-5">
+        let html = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 sm:p-5">
             <h4 class="font-bold text-white text-base mb-4">${MONTHS_CA[min.getMonth()]} ${min.getFullYear()} — ${MONTHS_CA[max.getMonth()]} ${max.getFullYear()}</h4>
             <div class="hidden sm:grid grid-cols-7 gap-2.5 mb-2">${labels.map(l => `<div class="text-[10px] font-bold uppercase text-slate-500 text-center">${l}</div>`).join('')}</div>
             <div class="grid grid-cols-1 sm:grid-cols-7 gap-2 sm:gap-2.5">`;
@@ -10142,12 +10142,12 @@
             });
         });
         if (!cards.length) {
-            el.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 text-center"><i data-lucide="pen-tool" class="w-8 h-8 text-slate-600 mx-auto mb-2"></i><p class="text-xs text-slate-500">Encara no hi ha cap pissarra${modelFilter !== 'tot' ? ' en aquesta fase' : ''}. Ves a <strong>Detall</strong>, edita un apartat i dibuixa una jugada.</p></div>`;
+            el.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-8 text-center"><i data-lucide="pen-tool" class="w-8 h-8 text-slate-600 mx-auto mb-2"></i><p class="text-xs text-slate-500">Encara no hi ha cap pissarra${modelFilter !== 'tot' ? ' en aquesta fase' : ''}. Ves a <strong>Detall</strong>, edita un apartat i dibuixa una jugada.</p></div>`;
             lucide.createIcons(); return;
         }
         el.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${cards.map(({ b, it, j }) => {
             const f = MODEL_FASES[b.fase] || MODEL_FASES.ofensiu;
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                 <button onclick="openBoardEditor('${b.id}',${j},true)" class="block w-full bg-slate-950/40 hover:opacity-90 transition-all" title="Veure la jugada">${boardSVG(it.board, {})}</button>
                 <div class="p-3">
                     <div class="flex items-center gap-1.5 mb-1"><span class="w-2 h-2 rounded-full bg-${f.tone}-400"></span><span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 truncate">${esc(f.label)} · ${esc(b.name)}</span></div>
@@ -10760,7 +10760,7 @@
                 ${open ? `<div class="px-4 pb-4 space-y-3">
                     <div class="divide-y divide-slate-800/40 border-y border-slate-800/40">${moments}</div>
                     <div class="flex flex-wrap gap-2">
-                        <button onclick="presentArchive('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-granate-600 hover:bg-granate-700 text-white text-xs font-semibold rounded-lg transition-all"><i data-lucide="monitor-play" class="w-3.5 h-3.5"></i>Presentar</button>
+                        <button onclick="presentArchive('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-semibold rounded-lg transition-all"><i data-lucide="monitor-play" class="w-3.5 h-3.5"></i>Presentar</button>
                         <button onclick="reopenArchive('${a.id}')" class="coach-only inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg transition-all"><i data-lucide="pencil" class="w-3.5 h-3.5"></i>Reprèn</button>
                         <button onclick="renameArchive('${a.id}')" class="coach-only inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg transition-all"><i data-lucide="type" class="w-3.5 h-3.5"></i>Reanomena</button>
                         <button onclick="deleteArchive('${a.id}')" class="coach-only inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 text-xs font-semibold rounded-lg transition-all"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Elimina</button>
@@ -11855,7 +11855,7 @@
                     return `<div class="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 rounded-lg px-3 py-2">
                         <span class="text-xs text-slate-200 flex-1 min-w-0 truncate">${esc(sessionLabel(sx))}</span>
                         ${badge}
-                        <button onclick="scoreSession('${esc(sx.iso)}')" class="shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${round ? 'bg-slate-800 hover:bg-slate-700 text-slate-200' : 'bg-granate-600 hover:bg-granate-700 text-white'}">${round ? 'Edita' : 'Puntua'}</button>
+                        <button onclick="scoreSession('${esc(sx.iso)}')" class="shrink-0 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${round ? 'bg-slate-800 hover:bg-slate-700 text-slate-200' : 'bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white'}">${round ? 'Edita' : 'Puntua'}</button>
                         ${round ? `<button onclick="deleteCompRound('${round.id}')" aria-label="Treu" class="shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-rose-400 transition-all"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>` : ''}
                     </div>`;
                 };
@@ -12090,7 +12090,7 @@
         box.innerHTML = rutinaCats().map(cat => {
             const items = state.routines.filter(r => r.cat === cat.key);
             const open = !rutinaCollapsed.has(cat.key);
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                 <div class="w-full flex items-center gap-3 p-4">
                     <button onclick="toggleRutinaCat('${cat.key}')" class="flex items-center gap-3 flex-1 min-w-0 text-left hover:opacity-80 transition-all">
                         <div class="w-9 h-9 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center text-granate-400 shrink-0"><i data-lucide="${cat.icon || 'dumbbell'}" class="w-4 h-4"></i></div>
@@ -12169,7 +12169,7 @@
             return `<div class="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 rounded-lg px-3 py-2">
                 <span class="text-[11px] font-bold text-granate-400 w-6 shrink-0">${esc(p.dorsal != null ? p.dorsal : '')}</span>
                 <span class="min-w-0 flex-1"><span class="block text-xs font-semibold text-slate-100 truncate">${esc(p.name)}</span><span class="block text-[10px] text-slate-500">${p.pin ? 'PIN ' + esc(p.pin) : 'sense PIN'} &middot; ${p.phone ? esc(p.phone) : 'sense telèfon'}</span></span>
-                <button onclick="waSend('${esc(p.id)}')" ${hasPhone ? '' : 'disabled'} class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${hasPhone ? (sent ? 'bg-granate-500/20 text-granate-300 border border-granate-500/40' : 'bg-granate-600 hover:bg-granate-700 text-white') : 'bg-slate-800 text-slate-600 cursor-not-allowed'}"><i data-lucide="${sent ? 'check' : 'send'}" class="w-3.5 h-3.5"></i>${sent ? 'Enviat' : 'Envia'}</button>
+                <button onclick="waSend('${esc(p.id)}')" ${hasPhone ? '' : 'disabled'} class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${hasPhone ? (sent ? 'bg-granate-500/20 text-granate-300 border border-granate-500/40' : 'bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white') : 'bg-slate-800 text-slate-600 cursor-not-allowed'}"><i data-lucide="${sent ? 'check' : 'send'}" class="w-3.5 h-3.5"></i>${sent ? 'Enviat' : 'Envia'}</button>
             </div>`;
         }).join('');
         lucide.createIcons();
@@ -12537,11 +12537,11 @@
         if (!wrap) return;
         const forms = state.sociograma.forms;
         if (!forms.length) {
-            wrap.innerHTML = `<div class="text-center py-10 px-4 bg-slate-900/60 border border-slate-800/80 rounded-2xl">
+            wrap.innerHTML = `<div class="text-center py-10 px-4 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-slate-500 mb-3"><i data-lucide="clipboard-list" class="w-6 h-6"></i></div>
                 <p class="text-sm text-slate-400 mb-4">Encara no has creat cap formulari.</p>
                 <div class="flex flex-col sm:flex-row gap-2 justify-center">
-                  <button onclick="sgNewForm()" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Nou formulari</button>
+                  <button onclick="sgNewForm()" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Nou formulari</button>
                   <button onclick="sgSeedExample()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i>Crear un exemple</button>
                 </div>
             </div>`;
@@ -12553,7 +12553,7 @@
             const resp = state.sociograma.responses[f.id] || {};
             const nResp = sgPlayers().filter(p => resp[p.id]).length;
             const pct = nTot ? Math.round(nResp / nTot * 100) : 0;
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
               <div class="min-w-0">
                 <p class="text-sm font-bold text-white truncate">${esc(f.title)}</p>
                 ${f.description ? `<p class="text-xs text-slate-400 mt-0.5">${esc(f.description)}</p>` : ''}
@@ -12564,7 +12564,7 @@
                 <div class="mt-2 h-1.5 w-full max-w-[220px] bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-500" style="width:${pct}%"></div></div>
               </div>
               <div class="flex flex-wrap gap-1.5 mt-3">
-                <button onclick="sgGoCollect('${f.id}')" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-700 text-white text-[11px] font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i>Recollir</button>
+                <button onclick="sgGoCollect('${f.id}')" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-[11px] font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="clipboard-check" class="w-3.5 h-3.5"></i>Recollir</button>
                 <button onclick="sgGoViz('${f.id}')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="network" class="w-3.5 h-3.5"></i>Visualitzar</button>
                 <button onclick="sgEditForm('${f.id}')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="pencil" class="w-3.5 h-3.5"></i>Edita</button>
                 <button onclick="sgDuplicateForm('${f.id}')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Duplica</button>
@@ -12931,10 +12931,10 @@
         const resp = state.sociograma.responses[form.id] || {};
         const nResp = sgPlayers().filter(p => resp[p.id]).length;
         if (!nResp) {
-            body.innerHTML = `<div class="text-center py-10 bg-slate-900/60 border border-slate-800/80 rounded-2xl">
+            body.innerHTML = `<div class="text-center py-10 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-slate-500 mb-3"><i data-lucide="inbox" class="w-6 h-6"></i></div>
                 <p class="text-sm text-slate-400 mb-3">Encara no hi ha respostes per aquest formulari.</p>
-                <button onclick="sgGoCollect('${form.id}')" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg inline-flex items-center gap-2"><i data-lucide="clipboard-check" class="w-4 h-4"></i>Recollir respostes</button>
+                <button onclick="sgGoCollect('${form.id}')" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg inline-flex items-center gap-2"><i data-lucide="clipboard-check" class="w-4 h-4"></i>Recollir respostes</button>
             </div>`;
             lucide.createIcons(); return;
         }
@@ -13143,7 +13143,7 @@
             ${sgMetric('Subgrups', String(data.groupCount), 'boxes')}
             ${sgMetric('Aïllats', String(data.isolates.length), 'user-x')}
           </div>
-          <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 mb-4">
+          <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 mb-4">
             <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
               <p class="text-sm font-bold text-white inline-flex items-center gap-2"><i data-lucide="network" class="w-4 h-4 text-granate-400"></i>Sociograma</p>
               <div class="flex items-center gap-1.5">
@@ -13165,11 +13165,11 @@
             ${sgFocusPanelHTML(data)}
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2 inline-flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4 text-granate-400"></i>Rànquing d'eleccions rebudes</p>
               <div style="height:${Math.max(160, ranked.length*24)}px"><canvas id="sg-canvas-1"></canvas></div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2 inline-flex items-center gap-2"><i data-lucide="grid-3x3" class="w-4 h-4 text-granate-400"></i>Matriu d'eleccions</p>
               <div class="overflow-auto max-h-[320px]">${sgMatrixHTML(data, !!q.ranked)}</div>
             </div>
@@ -13204,11 +13204,11 @@
             ${sgMetric('Rang', q.min + '–' + q.max, 'ruler')}
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2">Distribució de respostes</p>
               <div style="height:220px"><canvas id="sg-canvas-1"></canvas></div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2">Per jugador</p>
               <div class="space-y-1 max-h-[240px] overflow-auto pr-1">
                 ${perPlayer.map(x => `<div class="flex items-center gap-2">
@@ -13244,11 +13244,11 @@
             ${sgMetric('Opcions', String((q.options||[]).length), 'list')}
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2">Distribució</p>
               <div style="height:240px"><canvas id="sg-canvas-1"></canvas></div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
               <p class="text-sm font-bold text-white mb-2">Qui ha triat cada opció</p>
               <div class="space-y-2 max-h-[240px] overflow-auto pr-1">
                 ${(q.options||[]).map(o => `<div>
@@ -13276,7 +13276,7 @@
         const items = [];
         sgPlayers().forEach(p => { const r = resp[p.id]; const v = r && r.answers ? r.answers[q.id] : undefined; if (v && String(v).trim()) items.push({ p, v }); });
         if (!items.length) { body.innerHTML = `<p class="text-center text-sm text-slate-500 py-10">Cap resposta escrita.</p>`; return; }
-        body.innerHTML = `<div class="space-y-2">${items.map(x => `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+        body.innerHTML = `<div class="space-y-2">${items.map(x => `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
             <p class="text-xs font-bold text-granate-400 mb-1">${esc(x.p.name)}</p>
             <p class="text-sm text-slate-200 whitespace-pre-wrap">${esc(x.v)}</p>
         </div>`).join('')}</div>`;
@@ -13289,8 +13289,8 @@
         const resp = state.sociograma.responses[form.id] || {};
         const nResp = sgPlayers().filter(p => resp[p.id]).length;
         const noms = form.questions.filter(q => q.type === 'nominate');
-        if (!nResp) { body.innerHTML = `<div class="text-center py-10 bg-slate-900/60 border border-slate-800/80 rounded-2xl"><p class="text-sm text-slate-400 mb-3">Encara no hi ha respostes.</p><button onclick="sgGoCollect('${form.id}')" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Recollir respostes</button></div>`; lucide.createIcons(); return; }
-        if (!noms.length) { body.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center text-sm text-slate-400">Aquest formulari no té preguntes d'elecció de companys. Afegeix-ne alguna (p. ex. «amb qui t'agrada jugar» o «a qui veus com a líder») per obtenir el resum de xarxa de l'equip.</div>` + sgTeamQuickAggregates(form); lucide.createIcons(); return; }
+        if (!nResp) { body.innerHTML = `<div class="text-center py-10 bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl"><p class="text-sm text-slate-400 mb-3">Encara no hi ha respostes.</p><button onclick="sgGoCollect('${form.id}')" class="px-4 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg">Recollir respostes</button></div>`; lucide.createIcons(); return; }
+        if (!noms.length) { body.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6 text-center text-sm text-slate-400">Aquest formulari no té preguntes d'elecció de companys. Afegeix-ne alguna (p. ex. «amb qui t'agrada jugar» o «a qui veus com a líder») per obtenir el resum de xarxa de l'equip.</div>` + sgTeamQuickAggregates(form); lucide.createIcons(); return; }
         const data = sgAllNominateData(form);
         const maxIn = Math.max(1, ...data.players.map(p => data.inDeg[p.id]));
         const cohesion = data.edges.length ? Math.round(2 * data.mutualPairs / data.edges.length * 100) : 0;
@@ -13307,7 +13307,7 @@
                 ${sgMetric('Subgrups', String(data.groupCount), 'boxes')}
                 ${sgMetric('Aïllats', String(data.isolates.length), 'user-x')}
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 mb-4">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 mb-4">
                 <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
                     <p class="text-sm font-bold text-white inline-flex items-center gap-2"><i data-lucide="network" class="w-4 h-4 text-granate-400"></i>Xarxa global <span class="text-[11px] font-normal text-slate-500">(${noms.length} pregunt${noms.length === 1 ? 'a' : 'es'} d'elecció)</span></p>
                     <div class="flex items-center gap-1.5">
@@ -13327,7 +13327,7 @@
                 </div>
                 ${sgFocusPanelHTML(data)}
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
                 <p class="text-sm font-bold text-white mb-2 inline-flex items-center gap-2"><i data-lucide="list-ordered" class="w-4 h-4 text-granate-400"></i>Estatus sociomètric per jugador</p>
                 <div class="overflow-x-auto"><table class="w-full text-[11px]">
                     <thead><tr class="text-slate-500 border-b border-slate-800"><th class="text-left p-1.5">Jugador</th><th class="p-1.5">Rep</th><th class="p-1.5">Tria</th><th class="p-1.5">Mútues</th><th class="text-left p-1.5">Estatus</th></tr></thead>
@@ -13355,7 +13355,7 @@
             }
         });
         if (!blocks.length) return '';
-        return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 mt-4"><p class="text-sm font-bold text-white mb-2 inline-flex items-center gap-2"><i data-lucide="gauge" class="w-4 h-4 text-granate-400"></i>Resum d'opinions</p><div class="space-y-1 text-[11px]">${blocks.join('')}</div></div>`;
+        return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 mt-4"><p class="text-sm font-bold text-white mb-2 inline-flex items-center gap-2"><i data-lucide="gauge" class="w-4 h-4 text-granate-400"></i>Resum d'opinions</p><div class="space-y-1 text-[11px]">${blocks.join('')}</div></div>`;
     }
 
     /* ==================== COMPARATIVA (mode 'comparativa') ==================== */
@@ -13372,7 +13372,7 @@
         const scales = form.questions.filter(q => q.type === 'scale');
         const noms = form.questions.filter(q => q.type === 'nominate');
         if (!scales.length || !noms.length) {
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center text-sm text-slate-400">Per creuar l'auto‑percepció amb la mirada de l'equip necessites, al mateix formulari, <span class="text-slate-200 font-semibold">una pregunta d'escala</span> (com es valora el jugador) i <span class="text-slate-200 font-semibold">una d'elecció de companys</span> (a qui trien). Ara en tens ${scales.length} d'escala i ${noms.length} d'elecció.</div>`;
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6 text-center text-sm text-slate-400">Per creuar l'auto‑percepció amb la mirada de l'equip necessites, al mateix formulari, <span class="text-slate-200 font-semibold">una pregunta d'escala</span> (com es valora el jugador) i <span class="text-slate-200 font-semibold">una d'elecció de companys</span> (a qui trien). Ara en tens ${scales.length} d'escala i ${noms.length} d'elecció.</div>`;
         }
         if (!sgCmpScaleQ || !scales.some(q => q.id === sgCmpScaleQ)) sgCmpScaleQ = scales[0].id;
         if (!sgCmpNomQ || !noms.some(q => q.id === sgCmpNomQ)) sgCmpNomQ = noms[0].id;
@@ -13399,17 +13399,17 @@
                 <div><label class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Mirada de l'equip (elecció)</label>
                     <select onchange="sgCmpNomQ=this.value; renderSgViz();" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-2 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500">${noms.map(q => `<option value="${q.id}" ${q.id === sgCmpNomQ ? 'selected' : ''}>${esc(q.text || 'Elecció')}</option>`).join('')}</select></div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 mb-4">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3 mb-4">
                 <p class="text-sm font-bold text-white mb-2">Auto‑percepció vs eleccions rebudes</p>
                 <div style="height:300px"><canvas id="sg-canvas-1"></canvas></div>
                 <p class="text-[10px] text-slate-500 mt-1">Cada punt és un jugador. A prop de la diagonal = coherent. Amunt‑esquerra = es valora més del que l'equip el tria; avall‑dreta = l'equip el tria més del que ell creu.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
                     <p class="text-sm font-bold text-amber-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4"></i>Es valoren més del que l'equip els tria</p>
                     ${over.length ? over.map(listRow).join('') : '<p class="text-[11px] text-slate-500">Cap desajust destacable.</p>'}
                 </div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3">
                     <p class="text-sm font-bold text-emerald-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-down" class="w-4 h-4"></i>L'equip els tria més del que ells creuen</p>
                     ${under.length ? under.map(listRow).join('') : '<p class="text-[11px] text-slate-500">Cap desajust destacable.</p>'}
                 </div>
@@ -13432,8 +13432,8 @@
     function sgCompareEvolution(form) {
         const others = state.sociograma.forms.filter(f => f.id !== form.id && f.questions.some(q => q.type === 'nominate'));
         const noms1 = form.questions.filter(q => q.type === 'nominate');
-        if (!noms1.length) return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center text-sm text-slate-400">Aquest formulari no té preguntes d'elecció per comparar.</div>`;
-        if (!others.length) return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 text-center text-sm text-slate-400">Necessites un <span class="text-slate-200 font-semibold">segon formulari</span> amb preguntes d'elecció per veure l'evolució. Consell: duplica aquest formulari cada cert temps (pretemporada, meitat, final) i ves recollint respostes.</div>`;
+        if (!noms1.length) return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6 text-center text-sm text-slate-400">Aquest formulari no té preguntes d'elecció per comparar.</div>`;
+        if (!others.length) return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6 text-center text-sm text-slate-400">Necessites un <span class="text-slate-200 font-semibold">segon formulari</span> amb preguntes d'elecció per veure l'evolució. Consell: duplica aquest formulari cada cert temps (pretemporada, meitat, final) i ves recollint respostes.</div>`;
         if (!sgEvoForm2 || !others.some(f => f.id === sgEvoForm2)) sgEvoForm2 = others[0].id;
         const form2 = others.find(f => f.id === sgEvoForm2);
         const noms2 = form2.questions.filter(q => q.type === 'nominate');
@@ -13455,10 +13455,10 @@
                     <select onchange="sgEvoQ2=this.value; renderSgViz();" class="mt-1 w-full bg-slate-950 border border-slate-800 rounded-lg px-2 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500">${noms2.map(q => `<option value="${q.id}" ${q.id === sgEvoQ2 ? 'selected' : ''}>${esc(q.text || 'Elecció')}</option>`).join('')}</select></div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3"><p class="text-sm font-bold text-emerald-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4"></i>Guanyen eleccions</p>${up.length ? up.map(dRow).join('') : '<p class="text-[11px] text-slate-500">Cap.</p>'}</div>
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3"><p class="text-sm font-bold text-rose-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-down" class="w-4 h-4"></i>Perden eleccions</p>${down.length ? down.map(dRow).join('') : '<p class="text-[11px] text-slate-500">Cap.</p>'}</div>
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3"><p class="text-sm font-bold text-emerald-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4"></i>Guanyen eleccions</p>${up.length ? up.map(dRow).join('') : '<p class="text-[11px] text-slate-500">Cap.</p>'}</div>
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3"><p class="text-sm font-bold text-rose-300 mb-2 inline-flex items-center gap-1.5"><i data-lucide="trending-down" class="w-4 h-4"></i>Perden eleccions</p>${down.length ? down.map(dRow).join('') : '<p class="text-[11px] text-slate-500">Cap.</p>'}</div>
             </div>
-            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3"><div class="overflow-x-auto"><table class="w-full text-[11px]">
+            <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-3"><div class="overflow-x-auto"><table class="w-full text-[11px]">
                 <thead><tr class="text-slate-500 border-b border-slate-800"><th class="text-left p-1.5">Jugador</th><th class="p-1.5">A</th><th class="p-1.5">B</th><th class="p-1.5">Δ</th></tr></thead>
                 <tbody>${rows.sort((a, b) => b.delta - a.delta).map(r => `<tr class="border-b border-slate-800/40"><td class="p-1.5 font-semibold text-white whitespace-nowrap">${esc(r.p.name)}</td><td class="p-1.5 text-center text-slate-400">${r.a}</td><td class="p-1.5 text-center text-slate-200">${r.b}</td><td class="p-1.5 text-center font-bold ${r.delta > 0 ? 'text-emerald-400' : r.delta < 0 ? 'text-rose-400' : 'text-slate-500'}">${r.delta > 0 ? '+' : ''}${r.delta}</td></tr>`).join('')}</tbody></table></div></div>`;
     }
@@ -13470,10 +13470,10 @@
         const box = document.getElementById('sg-view-player');
         if (!box) return;
         const pid = playerSession;
-        if (!pid) { box.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 text-center text-sm text-slate-400">Inicia sessió com a jugador per respondre els formularis.</div>`; return; }
+        if (!pid) { box.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-8 text-center text-sm text-slate-400">Inicia sessió com a jugador per respondre els formularis.</div>`; return; }
         const forms = state.sociograma.forms || [];
         if (!forms.length) {
-            box.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-8 text-center">
+            box.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-8 text-center">
                 <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-800 flex items-center justify-center text-slate-500 mb-3"><i data-lucide="clipboard-list" class="w-6 h-6"></i></div>
                 <p class="text-sm text-slate-400">El teu entrenador encara no ha compartit cap formulari.</p>
             </div>`;
@@ -13481,7 +13481,7 @@
         }
         box.innerHTML = forms.map(f => {
             const answered = !!((state.sociograma.responses[f.id] || {})[pid]);
-            return `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+            return `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
                 <div class="flex items-start justify-between gap-3">
                     <div class="min-w-0">
                         <p class="text-sm font-bold text-white">${esc(f.title)}</p>
@@ -13491,7 +13491,7 @@
                     <span class="shrink-0 text-[10px] font-bold text-slate-500">${f.questions.length} pregunt${f.questions.length===1?'a':'es'}</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mt-3">
-                    <button onclick="sgPlayerFill('${f.id}')" class="px-3 py-2 ${answered?'bg-slate-800 hover:bg-slate-700 text-slate-200':'bg-granate-600 hover:bg-granate-700 text-white'} text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="${answered?'pencil':'pen-line'}" class="w-3.5 h-3.5"></i>${answered ? 'Revisa/edita' : 'Respondre'}</button>
+                    <button onclick="sgPlayerFill('${f.id}')" class="px-3 py-2 ${answered?'bg-slate-800 hover:bg-slate-700 text-slate-200':'bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white'} text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="${answered?'pencil':'pen-line'}" class="w-3.5 h-3.5"></i>${answered ? 'Revisa/edita' : 'Respondre'}</button>
                     ${answered ? `<button onclick="sgPlayerSend('${f.id}')" class="px-3 py-2 bg-granate-600 hover:bg-granate-500 text-white text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5"></i>Envia per WhatsApp</button>
                     <button onclick="sgPlayerCopy('${f.id}')" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copia codi</button>
                     <button onclick="sgPlayerDownload('${f.id}')" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="download" class="w-3.5 h-3.5"></i>Baixa</button>` : ''}
@@ -13688,7 +13688,7 @@
     function renderConvMatchCard(jornadaKey) {
         const box = document.getElementById('conv-matchcard'); if (!box || !jornadaKey) return;
         const c = matchCardOf(jornadaKey);
-        box.innerHTML = `<div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
+        box.innerHTML = `<div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4">
             <p class="text-xs font-bold text-white mb-3 flex items-center gap-1.5"><i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-emerald-400"></i>Fitxa del partit</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
@@ -13851,7 +13851,7 @@
         const has = convPlanHasContent(j);
         const ta = 'w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500 resize-none';
         if (!convPlanOpen) {
-            box.innerHTML = `<button onclick="toggleConvPlan()" class="w-full bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 flex items-center gap-3 text-left hover:bg-slate-800/30 transition-all">
+            box.innerHTML = `<button onclick="toggleConvPlan()" class="w-full bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4 flex items-center gap-3 text-left hover:bg-slate-800/30 transition-all">
                 <div class="shrink-0 w-9 h-9 rounded-lg bg-granate-500/10 text-granate-400 flex items-center justify-center"><i data-lucide="clipboard-list" class="w-4 h-4"></i></div>
                 <div class="min-w-0 flex-1">
                     <p class="text-sm font-bold text-slate-100">Planificació del partit</p>
