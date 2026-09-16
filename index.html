@@ -245,6 +245,21 @@
     </div>
 
     <!-- Modal admin: crear club nou -->
+    <!-- ===== VISTA D'UN SOL CLUB (administrador) — nomes els seus equips ===== -->
+    <div id="admin-club-view" class="hidden fixed inset-0 z-[1001] bg-slate-950 flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="w-full max-w-2xl py-10">
+            <button onclick="closeAdminClubView()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white mb-6"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>Tornar al panell</button>
+            <div class="flex items-center gap-3 mb-6">
+                <div id="admin-club-view-crest" class="w-11 h-11 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-[9px] text-slate-500 overflow-hidden shrink-0">Escut</div>
+                <div>
+                    <h1 id="admin-club-view-nom" class="text-xl font-bold"></h1>
+                    <p class="text-sm text-slate-400">Tria l'equip on vols entrar</p>
+                </div>
+            </div>
+            <div id="admin-club-view-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+        </div>
+    </div>
+
     <div id="admin-create-club-modal" class="hidden fixed inset-0 z-[1002] bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center p-3 sm:p-4 pt-10 sm:pt-4 overflow-y-auto">
         <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl p-6">
             <h2 class="text-lg font-bold mb-4">Crea un club nou</h2>
@@ -14379,6 +14394,38 @@
 
         let adminPanelIsLanding = false;
 
+        window.openAdminClubView = function (clubId) {
+            const club = adminClubsCache.find(c => c.id === clubId);
+            if (!club) return;
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('admin-club-view-nom').textContent = club.nom;
+            const crest = document.getElementById('admin-club-view-crest');
+            crest.innerHTML = club.escut ? `<img src="${club.escut}" class="w-full h-full object-cover">` : 'Escut';
+            const grid = document.getElementById('admin-club-view-grid');
+            grid.innerHTML = club.equips.map(e => `
+                <button onclick='adminEnterEquip(${JSON.stringify(e.equip_id)}, ${JSON.stringify(e.equip_nom)}, ${JSON.stringify(club.id)}, ${JSON.stringify(club.nom)}, ${JSON.stringify(club.escut)})' class="text-left bg-slate-900 border border-slate-800 hover:border-granate-500 rounded-2xl p-5 transition-all">
+                    <p class="font-bold text-white text-sm">${e.equip_nom}</p>
+                    <p class="text-xs text-slate-400 mt-1">${e.membres_count} jugador${e.membres_count === 1 ? '' : 's'}</p>
+                </button>`).join('') || '<p class="text-xs text-slate-500 col-span-full">Aquest club encara no té cap equip.</p>';
+            document.getElementById('admin-club-view').classList.remove('hidden');
+            lucide.createIcons();
+        };
+
+        window.closeAdminClubView = function () {
+            document.getElementById('admin-club-view').classList.add('hidden');
+            openAdminPanel();
+        };
+
+        window.adminEnterEquip = async function (equipId, equipNom, clubId, clubNom, escutUrl) {
+            document.getElementById('admin-club-view').classList.add('hidden');
+            document.getElementById('admin-panel').classList.add('hidden');
+            const fakeRol = {
+                equip_id: equipId, rol: 'coordinador', jugador_blob_id: null,
+                equips: { nom: equipNom, club_id: clubId, clubs: { nom: clubNom, escut_url: escutUrl } }
+            };
+            await enterTeamContext(fakeRol);
+        };
+
         window.openAdminPanel = async function () {
             document.getElementById('admin-panel').classList.remove('hidden');
             lucide.createIcons();
@@ -14394,6 +14441,8 @@
                 else showTeamPicker(cachedRols);
             }
         };
+
+        let adminClubsCache = [];
 
         async function refreshAdminTeamsList() {
             const wrap = document.getElementById('admin-teams-list');
@@ -14412,6 +14461,7 @@
                 }
                 byId[row.club_id].equips.push(row);
             });
+            adminClubsCache = clubs;
 
             wrap.innerHTML = clubs.map(c => `
                 <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
@@ -14424,6 +14474,7 @@
                             <p class="font-bold text-sm text-white truncate">${c.nom}</p>
                             <p class="text-[11px] text-slate-500">${c.equips.length} equip${c.equips.length === 1 ? '' : 's'}</p>
                         </div>
+                        <button onclick='event.stopPropagation(); openAdminClubView(${JSON.stringify(c.id)})' title="Entra al club" class="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-emerald-400 hover:bg-slate-800"><i data-lucide="log-in" class="w-3.5 h-3.5"></i></button>
                         <button onclick='event.stopPropagation(); openAdminEditClub(${JSON.stringify(c.id)}, ${JSON.stringify(c.nom)})' title="Edita el club" class="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-800"><i data-lucide="pencil" class="w-3.5 h-3.5"></i></button>
                         <button onclick='event.stopPropagation(); adminDeleteClub(${JSON.stringify(c.id)}, ${JSON.stringify(c.nom)})' title="Elimina el club" class="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-500 hover:text-rose-400 hover:bg-slate-800"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
                     </div>
