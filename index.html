@@ -234,7 +234,7 @@
                     <i data-lucide="shield" class="w-5 h-5 text-amber-400"></i>
                     <h1 class="text-xl font-bold">Panell d'administració</h1>
                 </div>
-                <button onclick="closeAdminPanel()" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800"><i data-lucide="x" class="w-4 h-4"></i></button>
+                <button onclick="appSignOut()" title="Tanca sessió" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-800"><i data-lucide="log-out" class="w-4 h-4"></i></button>
             </div>
             <p class="text-sm text-slate-400 mb-6">Tots els clubs i equips que existeixen a l'aplicatiu.</p>
 
@@ -245,6 +245,23 @@
     </div>
 
     <!-- Modal admin: crear club nou -->
+    <!-- Modal: generar sessions d'entrenament en massa, amb rang de dates -->
+    <div id="gen-sessions-modal" class="hidden fixed inset-0 z-[1000] bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center p-3 sm:p-4 pt-10 sm:pt-4 overflow-y-auto">
+        <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-2xl p-6">
+            <h2 class="text-lg font-bold mb-1">Genera sessions d'entrenament</h2>
+            <p class="text-xs text-slate-400 mb-4">Es crearà una sessió cada dia habitual configurat, dins d'aquest rang. Els dies que ja tinguin sessió no es toquen.</p>
+            <label class="block text-xs font-medium text-slate-400 mb-1.5">Des de</label>
+            <input type="date" id="gen-sessions-start" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 mb-4">
+            <label class="block text-xs font-medium text-slate-400 mb-1.5">Fins a</label>
+            <input type="date" id="gen-sessions-end" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 mb-5">
+            <div class="flex gap-2">
+                <button onclick="closeGenSessionsModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Cancel·la</button>
+                <button onclick="generateWeeklySessions()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Genera</button>
+            </div>
+            <div id="gen-sessions-msg" class="mt-3"></div>
+        </div>
+    </div>
+
     <!-- ===== VISTA D'UN SOL CLUB (administrador) — nomes els seus equips ===== -->
     <div id="admin-club-view" class="hidden fixed inset-0 z-[1001] bg-slate-950 flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
         <div class="w-full max-w-2xl py-10">
@@ -475,6 +492,9 @@
                 </button>
                 <button onclick="adminPanelIsLanding = false; openAdminPanel()" id="admin-panel-btn" title="Panell d'administració" class="hidden shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-amber-400 hover:text-amber-300 hover:bg-slate-800 transition-all">
                     <i data-lucide="shield" class="w-4 h-4"></i>
+                </button>
+                <button onclick="appSignOut()" title="Tanca sessió" class="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition-all">
+                    <i data-lucide="log-out" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
@@ -1123,7 +1143,7 @@
                                 <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400"><i data-lucide="calendar-clock" class="w-4 h-4"></i></div>
                                 <p class="text-sm font-bold text-white">Horaris d&rsquo;entrenament habitual</p>
                             </div>
-                            <button onclick="generateWeeklySessions()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>Genera sessions (set&ndash;maig)</button>
+                            <button onclick="openGenSessionsModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>Genera sessions</button>
                         </div>
                         <div id="horaris-entrenament-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <p class="text-xs text-slate-500 col-span-full">Encara no has configurat cap horari habitual. Afegeix-los des de la configuració (engranatge, al peu del menú).</p>
@@ -1354,24 +1374,6 @@
                         </div>
                     </div>
                     <div id="sessions-micro-list" class="p-3 sm:p-4 space-y-2"></div>
-                </div>
-
-                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl overflow-hidden">
-                    <div class="p-6 border-b border-slate-800">
-                        <div class="flex items-center gap-2 mb-1"><span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Tota la temporada</span></div>
-                        <h4 class="font-bold text-white text-base">Càrrega acumulada de la temporada</h4>
-                        <p class="text-xs text-slate-400 mt-1"><strong class="text-slate-300">No es filtra per dates</strong> (sempre la temporada completa). Entrenaments (present i entrenant, estats P i R) calculats des dels exercicis, més els partits (minuts reals × intensitat del partit). Ordenat per càrrega total.</p>
-                    </div>
-                    <div class="overflow-x-auto"><table class="w-full text-sm">
-                        <thead class="bg-slate-950/60 text-[10px] uppercase tracking-wider text-slate-400"><tr>
-                            <th class="p-3 text-center font-semibold w-12">#</th>
-                            <th class="p-3 text-left font-semibold">Jugador</th>
-                            <th class="p-3 text-center font-semibold">Entren. (UC)</th>
-                            <th class="p-3 text-center font-semibold">Partits (UC)</th>
-                            <th class="p-3 text-left font-semibold">Total (UC)</th>
-                        </tr></thead>
-                        <tbody id="player-loads-body" class="divide-y divide-slate-800/60"></tbody>
-                    </table></div>
                 </div>
             </section>
 
@@ -4404,6 +4406,17 @@
     }
 
     function renderSessionsTable() {
+        // Repara sessions antigues sense microcicle assignat (per exemple,
+        // generades abans que aquest càlcul existís).
+        let reparades = 0;
+        state.sessions.forEach(s => {
+            if (s.date && (!s.microcicle || !String(s.microcicle).trim())) {
+                s.microcicle = microcicleLabelForDate(s.date);
+                reparades++;
+            }
+        });
+        if (reparades > 0) { saveSoon(); }
+
         const countLabel = document.getElementById('sessions-count-label');
         if (countLabel) countLabel.innerText = `${state.sessions.length} ${state.sessions.length === 1 ? 'sessió' : 'sessions'}`;
         const box = document.getElementById('sessions-micro-list');
@@ -9248,20 +9261,48 @@
     // per cada dia de la setmana marcat com a horari habitual, de l'1 de
     // setembre al 31 de maig de la temporada en curs. No sobreescriu cap
     // sessió que ja existeixi aquell dia — només omple els buits.
-    function generateWeeklySessions() {
+    window.openGenSessionsModal = function () {
         const dies = (window.CFSE_HORARIS || []).map(h => h.dia).filter(Boolean);
         if (!dies.length) {
             toast('Configura primer els dies d\'entrenament habituals (engranatge del menú).');
             return;
         }
-        if (!confirm(`Es crearà una sessió d'entrenament cada ${dies.join(', ')}, de l'1 de setembre al 31 de maig. Els dies que ja tinguin sessió no es tocaran. Continuar?`)) return;
-
-        ensureSeasonCalendar();
-
         const today = new Date();
         const seasonStartYear = today.getMonth() >= 7 ? today.getFullYear() : today.getFullYear() - 1;
-        const start = new Date(seasonStartYear, 8, 1);       // 1 de setembre
-        const end = new Date(seasonStartYear + 1, 4, 31);    // 31 de maig
+        document.getElementById('gen-sessions-start').value = iso(new Date(seasonStartYear, 8, 1));
+        document.getElementById('gen-sessions-end').value = iso(new Date(seasonStartYear + 1, 4, 31));
+        document.getElementById('gen-sessions-msg').innerHTML = '';
+        document.getElementById('gen-sessions-modal').classList.remove('hidden');
+    };
+    window.closeGenSessionsModal = function () {
+        document.getElementById('gen-sessions-modal').classList.add('hidden');
+    };
+
+    // El microcicle 1 comença el dilluns de la setmana que conté l'1 de
+    // setembre de la temporada en curs — així el mateix dia sempre cau
+    // al mateix número, es faci quan es faci el càlcul.
+    function microcicleLabelForDate(d) {
+        const today = new Date();
+        const seasonStartYear = today.getMonth() >= 7 ? today.getFullYear() : today.getFullYear() - 1;
+        const sept1 = new Date(seasonStartYear, 8, 1);
+        const refMonday = new Date(sept1);
+        refMonday.setDate(refMonday.getDate() - ((sept1.getDay() + 6) % 7));
+        const monday = new Date(d);
+        monday.setDate(monday.getDate() - ((d.getDay() + 6) % 7));
+        const setmanes = Math.round((monday - refMonday) / (7 * 24 * 3600 * 1000));
+        return 'MC' + (setmanes + 1);
+    }
+
+    function generateWeeklySessions() {
+        const dies = (window.CFSE_HORARIS || []).map(h => h.dia).filter(Boolean);
+        const startVal = document.getElementById('gen-sessions-start').value;
+        const endVal = document.getElementById('gen-sessions-end').value;
+        if (!startVal || !endVal) { document.getElementById('gen-sessions-msg').innerHTML = '<div class="text-xs text-rose-400">Cal triar les dues dates.</div>'; return; }
+        const start = new Date(startVal + 'T00:00:00');
+        const end = new Date(endVal + 'T00:00:00');
+        if (start > end) { document.getElementById('gen-sessions-msg').innerHTML = '<div class="text-xs text-rose-400">La data d\'inici ha de ser abans que la de final.</div>'; return; }
+
+        ensureSeasonCalendar();
 
         const DOW = { 'Diumenge': 0, 'Dilluns': 1, 'Dimarts': 2, 'Dimecres': 3, 'Dijous': 4, 'Divendres': 5, 'Dissabte': 6 };
         const targetDows = dies.map(d => DOW[d]).filter(n => n != null);
@@ -9273,7 +9314,7 @@
                 const isoStr = iso(cursor);
                 if (!state.sessions.some(s => s.iso === isoStr)) {
                     state.sessions.push({
-                        microcicle: '', date: new Date(cursor), iso: isoStr,
+                        microcicle: microcicleLabelForDate(cursor), date: new Date(cursor), iso: isoStr,
                         esdeveniment: 'Entrenament', contingut: '', volum: null, intensitat: null, uc: 0, focus: ''
                     });
                     creades++;
@@ -9282,6 +9323,7 @@
             cursor.setDate(cursor.getDate() + 1);
         }
 
+        closeGenSessionsModal();
         if (creades > 0) {
             saveState();
             pushSoon();
@@ -14433,13 +14475,12 @@
         };
         window.closeAdminPanel = function () {
             document.getElementById('admin-panel').classList.add('hidden');
-            if (adminPanelIsLanding && cachedRols.length) {
-                // El panell era la pantalla d'entrada (no hi ha cap tauler
-                // d'equip obert a sota): en tancar-lo, porta'l a un equip
-                // en comptes de deixar-lo davant d'una pantalla buida.
-                if (cachedRols.length === 1) enterTeamContext(cachedRols[0]);
-                else showTeamPicker(cachedRols);
-            }
+        };
+
+        window.appSignOut = async function () {
+            if (!confirm('Vols tancar la sessió?')) return;
+            await sb.auth.signOut();
+            location.reload();
         };
 
         let adminClubsCache = [];
