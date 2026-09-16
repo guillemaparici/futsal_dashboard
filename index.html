@@ -458,7 +458,7 @@
                 <button onclick="openTeamPickerFromApp()" id="switch-team-btn" title="Canvia d'equip" class="hidden shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
                     <i data-lucide="repeat" class="w-4 h-4"></i>
                 </button>
-                <button onclick="openAdminPanel()" id="admin-panel-btn" title="Panell d'administració" class="hidden shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-amber-400 hover:text-amber-300 hover:bg-slate-800 transition-all">
+                <button onclick="adminPanelIsLanding = false; openAdminPanel()" id="admin-panel-btn" title="Panell d'administració" class="hidden shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-amber-400 hover:text-amber-300 hover:bg-slate-800 transition-all">
                     <i data-lucide="shield" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -14189,19 +14189,32 @@
                 .from('usuari_equip_rol')
                 .select('rol, equip_id, jugador_blob_id, equips(nom, club_id, clubs(nom, escut_url))');
 
-            if (error || !rols || !rols.length) {
+            cachedRols = rols || [];
+
+            if (window.CFSE_IS_ADMIN) {
+                // Un administrador aterra sempre al panell, tingui o no
+                // equips propis assignats. Si en té, pot entrar-hi des
+                // d'aquí mateix (botó "Canvia d'equip").
+                document.getElementById('switch-team-btn').classList.toggle('hidden', cachedRols.length < 1);
+                document.getElementById('auth-gate').classList.add('hidden');
+                document.getElementById('team-picker').classList.add('hidden');
+                adminPanelIsLanding = true;
+                await openAdminPanel();
+                return;
+            }
+
+            if (error || !cachedRols.length) {
                 agShowMsg('Aquest compte encara no té cap equip assignat. Contacta amb el coordinador del teu club.', 'error');
                 await sb.auth.signOut();
                 return;
             }
 
-            cachedRols = rols;
-            document.getElementById('switch-team-btn').classList.toggle('hidden', rols.length < 2);
+            document.getElementById('switch-team-btn').classList.toggle('hidden', cachedRols.length < 2);
 
-            if (rols.length === 1) {
-                await enterTeamContext(rols[0]);
+            if (cachedRols.length === 1) {
+                await enterTeamContext(cachedRols[0]);
             } else {
-                showTeamPicker(rols);
+                showTeamPicker(cachedRols);
             }
         }
 
@@ -14364,6 +14377,8 @@
 
         /* ---- Panell d'administració ---- */
 
+        let adminPanelIsLanding = false;
+
         window.openAdminPanel = async function () {
             document.getElementById('admin-panel').classList.remove('hidden');
             lucide.createIcons();
@@ -14371,6 +14386,13 @@
         };
         window.closeAdminPanel = function () {
             document.getElementById('admin-panel').classList.add('hidden');
+            if (adminPanelIsLanding && cachedRols.length) {
+                // El panell era la pantalla d'entrada (no hi ha cap tauler
+                // d'equip obert a sota): en tancar-lo, porta'l a un equip
+                // en comptes de deixar-lo davant d'una pantalla buida.
+                if (cachedRols.length === 1) enterTeamContext(cachedRols[0]);
+                else showTeamPicker(cachedRols);
+            }
         };
 
         async function refreshAdminTeamsList() {
