@@ -435,7 +435,7 @@
                 <textarea id="side-narr-input" rows="1" placeholder="Enganxa aquí el codi..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2 py-1 text-[10px] text-slate-200 font-mono placeholder-slate-600 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
                 <div class="flex gap-1 mt-1">
                     <button onclick="pasteSideNarration()" title="Enganxa del porta-retalls" class="shrink-0 w-7 h-7 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg flex items-center justify-center"><i data-lucide="clipboard-paste" class="w-3 h-3"></i></button>
-                    <button onclick="analyzeSideNarration()" class="flex-1 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold rounded-lg">Analitza</button>
+                    <button onclick="analyzeSideNarration()" class="flex-1 py-1 bg-granate-600 hover:bg-granate-500 text-white text-[10px] font-bold rounded-lg">Analitza</button>
                 </div>
                 <p id="storage-warning" class="hidden mt-1 text-[9px] text-amber-400/90 leading-tight"></p>
 
@@ -455,6 +455,10 @@
                     </div>
 
                     <div id="side-manual-backup" class="hidden mt-1.5">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <p class="text-[9px] font-bold uppercase tracking-wider text-slate-500">Còpia manual</p>
+                            <button onclick="document.getElementById('side-manual-backup').classList.add('hidden')" class="text-[9px] font-semibold text-slate-500 hover:text-white flex items-center gap-1"><i data-lucide="x" class="w-3 h-3"></i>Tanca</button>
+                        </div>
                         <p id="export-reminder" class="text-[9px] leading-tight mb-1.5"></p>
                         <div class="grid grid-cols-2 gap-1.5">
                             <button onclick="exportBackup()" class="py-1.5 bg-slate-800 hover:bg-slate-700/80 active:scale-[0.98] transition-all text-[10px] font-semibold rounded-lg text-slate-200 flex items-center justify-center gap-1.5">
@@ -661,7 +665,7 @@
                                     <button id="squad-view-cards-btn" onclick="setSquadView('cards')" title="Vista de targetes" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i></button>
                                     <button id="squad-view-table-btn" onclick="setSquadView('table')" title="Vista de taula" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
                                 </div>
-                                <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
+                                <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
                             </div>
                         </div>
                         <div class="coach-only px-6 py-2.5 border-b border-slate-800/60 flex items-center justify-end">
@@ -719,7 +723,7 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <select id="attendance-micro-select" onchange="renderAttendance()" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:border-emerald-500"></select>
-                            <button onclick="exportAttendance()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold rounded-lg transition-all shrink-0 whitespace-nowrap"><i data-lucide="download" class="w-3.5 h-3.5"></i>Exporta l'assistència</button>
+                            <button onclick="exportAttendance()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-granate-500 hover:bg-granate-600 text-slate-950 text-xs font-bold rounded-lg transition-all shrink-0 whitespace-nowrap"><i data-lucide="download" class="w-3.5 h-3.5"></i>Exporta l'assistència</button>
                         </div>
                     </div>
                     <div class="overflow-x-auto">
@@ -870,7 +874,7 @@
                     <!-- MILLORA 3: Selector d'estadístiques de jugadors vs equip -->
                     <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
                         <div class="inline-flex bg-slate-950 border border-slate-800 rounded-lg p-0.5 text-[11px] font-bold">
-                            <button onclick="setStatsMode('players')" id="stats-view-players" class="coach-only px-3 py-1.5 rounded-md transition-all bg-emerald-500 text-slate-950 shadow">Jugadors</button>
+                            <button onclick="setStatsMode('players')" id="stats-view-players" class="coach-only px-3 py-1.5 rounded-md transition-all bg-granate-500 text-slate-950 shadow">Jugadors</button>
                             <button onclick="setStatsMode('team')" id="stats-view-team" class="px-3 py-1.5 rounded-md transition-all text-slate-400 hover:text-slate-100">Equip</button>
                         </div>
                     </div>
@@ -1151,7 +1155,7 @@
                                 <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400"><i data-lucide="calendar-clock" class="w-4 h-4"></i></div>
                                 <p class="text-sm font-bold text-white">Horaris d&rsquo;entrenament habitual</p>
                             </div>
-                            <button onclick="openGenSessionsModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>Genera sessions</button>
+                            <button onclick="openGenSessionsModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-granate-600 hover:bg-granate-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>Genera sessions</button>
                         </div>
                         <div id="horaris-entrenament-list" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <p class="text-xs text-slate-500 col-span-full">Encara no has configurat cap horari habitual. Afegeix-los des de la configuració (engranatge, al peu del menú).</p>
@@ -1290,7 +1294,7 @@
                         </div>
 
                         <div class="flex gap-2">
-                            <button onclick="saveDayEdit()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg">Desa el dia</button>
+                            <button onclick="saveDayEdit()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Desa el dia</button>
                             <button onclick="deleteDaySession()" id="de-delete-btn" class="hidden py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 text-sm font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="trash-2" class="w-4 h-4"></i>Elimina</button>
                             <button onclick="toggleDayEdit()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button>
                         </div>
@@ -1308,7 +1312,7 @@
                             <input type="date" id="load-date-from" class="px-3 py-1.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-300 focus:outline-none focus:border-emerald-500">
                             <span class="text-slate-500 text-xs">fins</span>
                             <input type="date" id="load-date-to" class="px-3 py-1.5 text-xs bg-slate-950 border border-slate-800 rounded-lg text-slate-300 focus:outline-none focus:border-emerald-500">
-                            <button onclick="applyLoadDateFilter()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg transition-all">Aplica</button>
+                            <button onclick="applyLoadDateFilter()" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-500 text-white text-xs font-bold rounded-lg transition-all">Aplica</button>
                             <button onclick="resetLoadDateFilter()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition-all">Totes</button>
                         </div>
                     </div>
@@ -1422,7 +1426,7 @@
                                     <h4 class="font-bold text-white text-base" id="model-of-title">Continguts ofensius</h4>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <button onclick="addModelBlock('ofensiu')" class="model-edit-only hidden shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="plus" class="w-3 h-3"></i>Bloc</button>
+                                    <button onclick="addModelBlock('ofensiu')" class="model-edit-only hidden shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 bg-granate-600 hover:bg-granate-500 text-white text-[11px] font-bold rounded-lg transition-all"><i data-lucide="plus" class="w-3 h-3"></i>Bloc</button>
                                     <button onclick="toggleModelSection('ofensiu')" class="w-8 h-8 flex items-center justify-center rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all"><i data-lucide="chevron-up" id="toggle-ofensiu" class="w-4 h-4"></i></button>
                                 </div>
                             </div>
@@ -1796,7 +1800,7 @@
                         <p class="text-xs text-slate-400 mt-1 mb-5">Els jugadors surten en el mateix ordre que a l'Excel, així pots enganxar cada columna directament al bloc corresponent de la pestanya Estadística.</p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <button onclick="exportMatchXLSX()" class="py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] transition-all text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2">
+                            <button onclick="exportMatchXLSX()" class="py-3.5 rounded-xl bg-granate-500 hover:bg-granate-400 active:scale-[0.98] transition-all text-slate-950 font-extrabold text-sm flex items-center justify-center gap-2">
                                 <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Descarregar Excel del partit
                             </button>
                             <button onclick="copyMatchTable()" class="py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-[0.98] transition-all text-slate-100 font-bold text-sm flex items-center justify-center gap-2">
@@ -1851,7 +1855,7 @@
                     <h4 class="font-bold text-white text-sm">Marca un moment</h4>
                     <p class="text-xs text-slate-400 leading-relaxed">Afegeix un moment amb el seu enllaç de YouTube, la categoria, els jugadors i una nota. Si has posat l'enllaç del partit a dalt, cada moment nou ja el porta i només hi has de posar el temps.</p>
                     <div class="flex flex-col sm:flex-row gap-2">
-                        <button onclick="addMarker()" class="coach-only flex-1 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Afegeix moment</button>
+                        <button onclick="addMarker()" class="coach-only flex-1 py-2.5 bg-granate-500 hover:bg-granate-600 text-slate-950 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i>Afegeix moment</button>
                         <button onclick="openPresentation()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2"><i data-lucide="monitor-play" class="w-4 h-4"></i>Mode presentació</button>
                     </div>
                 </div>
@@ -1990,10 +1994,10 @@
                             <div id="conv-jornada-context" class="text-xs text-slate-400 sm:text-right"></div>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 text-[10px] font-semibold">
-                            <button onclick="convMarkAll('C')" class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-lg hover:bg-emerald-500/20 transition-all">Convoca tothom</button>
+                            <button onclick="convMarkAll('C')" class="px-2.5 py-1 bg-granate-500/10 text-granate-400 border border-granate-500/20 rounded-lg hover:bg-granate-500/20 transition-all">Convoca tothom</button>
                             <button onclick="convMarkAll('')" class="px-2.5 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:bg-slate-700 transition-all">Neteja la jornada</button>
                             <!-- MILLORA 7: Botó enviar convocatòria per WhatsApp -->
-                            <button onclick="sendConvocatoriaWhatsApp()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg inline-flex items-center gap-1.5 transition-all"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i>Envia per WhatsApp</button>
+                            <button onclick="sendConvocatoriaWhatsApp()" class="px-3 py-1.5 bg-granate-600 hover:bg-granate-500 text-white rounded-lg inline-flex items-center gap-1.5 transition-all"><i data-lucide="message-circle" class="w-3.5 h-3.5"></i>Envia per WhatsApp</button>
                             <span id="conv-jornada-summary" class="text-slate-500 ml-auto"></span>
                         </div>
                     </div>
@@ -2008,7 +2012,7 @@
                     <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4">
                         <div class="flex items-center justify-between gap-3 flex-wrap">
                             <p class="text-sm font-bold text-white">Històric de convocatòries</p>
-                            <button onclick="convExport()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold rounded-lg transition-all shrink-0"><i data-lucide="download" class="w-3.5 h-3.5"></i>Exporta</button>
+                            <button onclick="convExport()" class="inline-flex items-center gap-1.5 px-3 py-2 bg-granate-500 hover:bg-granate-600 text-slate-950 text-xs font-bold rounded-lg transition-all shrink-0"><i data-lucide="download" class="w-3.5 h-3.5"></i>Exporta</button>
                         </div>
                     </div>
                     <div id="conv-historic-body" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3 overflow-x-auto"></div>
@@ -2238,13 +2242,13 @@
                     </div>
                     <input id="obj-manual-current" type="number" min="0" placeholder="Progrés actual (només manual)" class="hidden w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
                     <div class="flex gap-2">
-                        <button onclick="saveObjectiveForm()" class="flex-1 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg">Desa objectiu</button>
+                        <button onclick="saveObjectiveForm()" class="flex-1 py-1.5 bg-granate-600 hover:bg-granate-500 text-white text-xs font-bold rounded-lg">Desa objectiu</button>
                         <button onclick="toggleObjectiveForm(false)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg">Cancel·la</button>
                     </div>
                 </div>
             </div>
             <div class="flex gap-2 pt-1">
-                <button onclick="savePlayerEditor()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg">Desa</button>
+                <button onclick="savePlayerEditor()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Desa</button>
                 <button onclick="closePlayerEditor()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button>
             </div>
         </div>
@@ -2358,7 +2362,7 @@
             <div class="flex-1 overflow-y-auto p-5 space-y-4" id="conv-wa-form"></div>
             <div class="shrink-0 p-5 border-t border-slate-800 flex gap-3">
                 <button onclick="closeConvocatoriaModal()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition-all">Cancel·la</button>
-                <button onclick="copyConvocatoriaToClipboard()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all inline-flex items-center justify-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i>Copia missatge</button>
+                <button onclick="copyConvocatoriaToClipboard()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg transition-all inline-flex items-center justify-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i>Copia missatge</button>
             </div>
         </div>
     </div>
@@ -2375,7 +2379,7 @@
                 <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Grup de l&rsquo;equip</p>
                 <input type="text" id="wa-group" placeholder="Enllaç del grup (https://chat.whatsapp.com/...)" onchange="setWaGroup(this.value)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500">
                 <div class="flex gap-2">
-                    <button onclick="waOpenGroup()" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="users" class="w-3.5 h-3.5"></i>Obre el grup</button>
+                    <button onclick="waOpenGroup()" class="flex-1 py-2 bg-granate-600 hover:bg-granate-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="users" class="w-3.5 h-3.5"></i>Obre el grup</button>
                     <button onclick="copyGlobalMessage()" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-all"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copia missatge</button>
                 </div>
             </div>
@@ -2437,7 +2441,7 @@
             </div>
             <div id="event-modal-body" class="p-5 overflow-y-auto"></div>
             <div class="flex gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
-                <button onclick="saveEvent()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg">Desa</button>
+                <button onclick="saveEvent()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Desa</button>
                 <button onclick="closeEventModal()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button>
             </div>
         </div>
@@ -2455,13 +2459,13 @@
                     <textarea id="narr-json-input" rows="10" placeholder='{"kind": "partit" | "entreno", ...}' class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-emerald-500"></textarea>
                     <div class="flex gap-2 mt-3">
                         <button onclick="pasteNarrationFromClipboard()" class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg flex items-center gap-1.5"><i data-lucide="clipboard-paste" class="w-4 h-4"></i>Enganxa</button>
-                        <button onclick="analyzeNarration()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg">Analitza</button>
+                        <button onclick="analyzeNarration()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Analitza</button>
                     </div>
                 </div>
                 <div id="narr-step-preview" class="hidden space-y-3"></div>
             </div>
             <div id="narr-modal-footer" class="hidden flex gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
-                <button onclick="commitNarrationImport()" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg">Aplica al dashboard</button>
+                <button onclick="commitNarrationImport()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Aplica al dashboard</button>
                 <button onclick="closeNarrationImport()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg">Cancel&middot;la</button>
             </div>
         </div>
@@ -2516,7 +2520,7 @@
             </div>
             <div id="sg-fill-body" class="p-5 space-y-3 overflow-y-auto"></div>
             <div class="flex flex-wrap gap-2 p-5 pt-3 border-t border-slate-800 shrink-0">
-                <button onclick="sgFillSaveAndSend()" class="player-only flex-1 min-w-[160px] py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i>Envia per WhatsApp</button>
+                <button onclick="sgFillSaveAndSend()" class="player-only flex-1 min-w-[160px] py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i>Envia per WhatsApp</button>
                 <button onclick="sgFillSave()" class="player-only py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold rounded-lg">Desa esborrany</button>
                 <button onclick="sgFillSave()" class="coach-only flex-1 py-2.5 bg-granate-600 hover:bg-granate-700 text-white text-sm font-bold rounded-lg">Desa la resposta</button>
                 <button id="sg-fill-delete" onclick="sgFillDelete()" class="coach-only hidden py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-rose-400 text-sm font-semibold rounded-lg">Esborra</button>
@@ -4693,7 +4697,7 @@
                 <div class="flex items-center justify-between gap-2">
                     <div class="min-w-0"><p class="text-xs font-semibold text-slate-200 truncate">${esc(o.text)}</p><p class="text-[10px] text-slate-500">${scopeLabel} · ${esc(OBJ_METRICS[o.metric] ? OBJ_METRICS[o.metric].label : o.metric)}</p></div>
                     <div class="flex items-center gap-1 shrink-0">
-                        <button onclick="togglePublishFromEditor('${o.id}')" class="text-[9px] font-bold px-1.5 py-1 rounded ${o.published ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'}">${o.published ? 'Publicat' : 'Esborrany'}</button>
+                        <button onclick="togglePublishFromEditor('${o.id}')" class="text-[9px] font-bold px-1.5 py-1 rounded ${o.published ? 'bg-granate-500/15 text-granate-400' : 'bg-amber-500/15 text-amber-400'}">${o.published ? 'Publicat' : 'Esborrany'}</button>
                         <button onclick="removeObjectiveFromEditor('${o.id}')" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-500 hover:text-rose-400"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
                     </div>
                 </div>
@@ -7759,7 +7763,7 @@
                 ${open ? `<div class="px-4 pb-4 space-y-3">
                     ${matchArchiveTable(m)}
                     <div class="flex flex-wrap gap-2">
-                        <button onclick="exportArchivedMatch('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold rounded-lg transition-all"><i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>Excel</button>
+                        <button onclick="exportArchivedMatch('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-granate-500 hover:bg-granate-400 text-slate-950 text-xs font-bold rounded-lg transition-all"><i data-lucide="file-spreadsheet" class="w-3.5 h-3.5"></i>Excel</button>
                         <button onclick="copyArchivedMatch('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg transition-all"><i data-lucide="clipboard-copy" class="w-3.5 h-3.5"></i>Copia taula</button>
                         <button onclick="reopenMatchArchive('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg transition-all"><i data-lucide="pencil" class="w-3.5 h-3.5"></i>Reprèn</button>
                         <button onclick="renameMatchArchive('${a.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs font-semibold rounded-lg transition-all"><i data-lucide="type" class="w-3.5 h-3.5"></i>Reanomena</button>
@@ -8073,7 +8077,7 @@
         const players = activePlayers();
         const opt = (val, cur) => `<option value="${esc(val)}" ${String(cur) === String(val) ? 'selected' : ''}>`;
         const sideSel = ed.id ? '' : `<div class="flex rounded-lg overflow-hidden border border-slate-800 mb-3">
-            <button onclick="evSetSide('gf')" class="flex-1 py-2 text-xs font-bold ${ed.side === 'gf' ? 'bg-emerald-600 text-white' : 'bg-slate-950 text-slate-400'}">Gol a favor</button>
+            <button onclick="evSetSide('gf')" class="flex-1 py-2 text-xs font-bold ${ed.side === 'gf' ? 'bg-granate-600 text-white' : 'bg-slate-950 text-slate-400'}">Gol a favor</button>
             <button onclick="evSetSide('gc')" class="flex-1 py-2 text-xs font-bold ${ed.side === 'gc' ? 'bg-rose-600 text-white' : 'bg-slate-950 text-slate-400'}">Gol en contra</button>
         </div>`;
         const scorerSel = ed.side === 'gf' ? `<div class="grid grid-cols-2 gap-2">
@@ -9393,7 +9397,7 @@
         } else if (calendarEditMode) {
             wrap.innerHTML = `<div class="bg-slate-900/60 border border-dashed border-slate-700 rounded-2xl p-10 text-center">
                 <p class="text-xs text-slate-400 mb-4">Encara no hi ha cap bloc de calendari. Crea el primer per començar a planificar.</p>
-                <button onclick="addMonth()" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg"><i data-lucide="plus" class="w-4 h-4"></i>Crea el primer bloc</button>
+                <button onclick="addMonth()" class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-xs font-bold rounded-lg"><i data-lucide="plus" class="w-4 h-4"></i>Crea el primer bloc</button>
             </div>`;
         } else {
             wrap.innerHTML = fallbackCalendarHTML();
@@ -11296,7 +11300,7 @@
                     <p class="text-xs text-slate-400 truncate">${esc(x.concept || '')}</p>
                 </div>
                 <span class="text-sm font-extrabold shrink-0 tabular-nums ${x.paid ? 'text-slate-500' : 'text-rose-400'}">${amt} €</span>
-                ${editable ? `<button onclick="toggleFinePaid('${x.id}')" class="shrink-0 px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all ${x.paid ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'}">${x.paid ? 'Cobrat' : 'Marca pagat'}</button>` : ''}
+                ${editable ? `<button onclick="toggleFinePaid('${x.id}')" class="shrink-0 px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all ${x.paid ? 'bg-granate-500/15 text-granate-300 border border-granate-500/30 hover:bg-granate-500/25' : 'bg-slate-800 hover:bg-slate-700 text-slate-200'}">${x.paid ? 'Cobrat' : 'Marca pagat'}</button>` : ''}
                 ${editable ? `<button onclick="deleteFine('${x.id}')" aria-label="Elimina" class="shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-rose-400 transition-all"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>` : ''}
             </div>`;
         }).join('') : `<p class="p-6 text-center text-xs text-slate-500">Cap multa registrada.</p>`;
@@ -12165,7 +12169,7 @@
             return `<div class="flex items-center gap-2 bg-slate-950/40 border border-slate-800/50 rounded-lg px-3 py-2">
                 <span class="text-[11px] font-bold text-granate-400 w-6 shrink-0">${esc(p.dorsal != null ? p.dorsal : '')}</span>
                 <span class="min-w-0 flex-1"><span class="block text-xs font-semibold text-slate-100 truncate">${esc(p.name)}</span><span class="block text-[10px] text-slate-500">${p.pin ? 'PIN ' + esc(p.pin) : 'sense PIN'} &middot; ${p.phone ? esc(p.phone) : 'sense telèfon'}</span></span>
-                <button onclick="waSend('${esc(p.id)}')" ${hasPhone ? '' : 'disabled'} class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${hasPhone ? (sent ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-emerald-600 hover:bg-emerald-700 text-white') : 'bg-slate-800 text-slate-600 cursor-not-allowed'}"><i data-lucide="${sent ? 'check' : 'send'}" class="w-3.5 h-3.5"></i>${sent ? 'Enviat' : 'Envia'}</button>
+                <button onclick="waSend('${esc(p.id)}')" ${hasPhone ? '' : 'disabled'} class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${hasPhone ? (sent ? 'bg-granate-500/20 text-granate-300 border border-granate-500/40' : 'bg-granate-600 hover:bg-granate-700 text-white') : 'bg-slate-800 text-slate-600 cursor-not-allowed'}"><i data-lucide="${sent ? 'check' : 'send'}" class="w-3.5 h-3.5"></i>${sent ? 'Enviat' : 'Envia'}</button>
             </div>`;
         }).join('');
         lucide.createIcons();
@@ -12751,7 +12755,7 @@
             ${players.map(p => {
                 const done = !!resp[p.id];
                 const badge = (p.dorsal != null && p.dorsal !== '') ? esc(p.dorsal) : esc(sgShort(p).slice(0,2));
-                return `<button onclick="sgFillOpen('${p.id}')" class="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border text-left transition-all ${done ? 'bg-emerald-500/5 border-emerald-500/30 hover:bg-emerald-500/10' : 'bg-slate-950/40 border-slate-800/70 hover:bg-slate-800/60'}">
+                return `<button onclick="sgFillOpen('${p.id}')" class="flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border text-left transition-all ${done ? 'bg-granate-500/5 border-granate-500/30 hover:bg-granate-500/10' : 'bg-slate-950/40 border-slate-800/70 hover:bg-slate-800/60'}">
                     <span class="flex items-center gap-2 min-w-0">
                         <span class="w-7 h-7 rounded-lg ${done?'bg-emerald-500/15 text-emerald-300':'bg-slate-800 text-slate-400'} flex items-center justify-center text-[11px] font-bold shrink-0">${badge}</span>
                         <span class="text-sm font-semibold text-slate-100 truncate">${esc(p.name)}</span>
@@ -12798,7 +12802,7 @@
                 const cur = Array.isArray(A[q.id]) ? A[q.id] : [];
                 ctrl = `<div class="flex flex-wrap gap-1.5">${(q.options||[]).map(o => {
                     const on = cur.includes(o);
-                    return `<button data-v="${esc(o)}" onclick="sgFillToggleMulti('${q.id}',this.dataset.v)" class="px-3 py-2 rounded-lg text-sm font-semibold border transition-all ${on?'bg-emerald-600 border-emerald-500 text-white':'bg-slate-950 border-slate-800 text-slate-300 hover:bg-slate-800'}">${esc(o)}</button>`;
+                    return `<button data-v="${esc(o)}" onclick="sgFillToggleMulti('${q.id}',this.dataset.v)" class="px-3 py-2 rounded-lg text-sm font-semibold border transition-all ${on?'bg-granate-600 border-granate-500 text-white':'bg-slate-950 border-slate-800 text-slate-300 hover:bg-slate-800'}">${esc(o)}</button>`;
                 }).join('')}</div>`;
             } else if (q.type === 'nominate') {
                 const cur = Array.isArray(A[q.id]) ? A[q.id] : [];
@@ -13488,7 +13492,7 @@
                 </div>
                 <div class="flex flex-wrap gap-1.5 mt-3">
                     <button onclick="sgPlayerFill('${f.id}')" class="px-3 py-2 ${answered?'bg-slate-800 hover:bg-slate-700 text-slate-200':'bg-granate-600 hover:bg-granate-700 text-white'} text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="${answered?'pencil':'pen-line'}" class="w-3.5 h-3.5"></i>${answered ? 'Revisa/edita' : 'Respondre'}</button>
-                    ${answered ? `<button onclick="sgPlayerSend('${f.id}')" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5"></i>Envia per WhatsApp</button>
+                    ${answered ? `<button onclick="sgPlayerSend('${f.id}')" class="px-3 py-2 bg-granate-600 hover:bg-granate-500 text-white text-xs font-bold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5"></i>Envia per WhatsApp</button>
                     <button onclick="sgPlayerCopy('${f.id}')" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copia codi</button>
                     <button onclick="sgPlayerDownload('${f.id}')" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"><i data-lucide="download" class="w-3.5 h-3.5"></i>Baixa</button>` : ''}
                 </div>
@@ -13931,7 +13935,7 @@
                     <span class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center text-xs font-bold shrink-0">${badge}</span>
                     <span class="font-semibold text-white text-sm flex-1 min-w-[120px] truncate">${esc(p.name)}</span>
                     <div class="flex rounded-lg overflow-hidden border border-slate-800 shrink-0">
-                        <button onclick="convSetStatus('${p.id}','C')" class="px-3 py-1.5 text-xs font-bold ${isC ? 'bg-emerald-600 text-white' : 'bg-slate-950 text-slate-400 hover:bg-slate-800'}">Convocat</button>
+                        <button onclick="convSetStatus('${p.id}','C')" class="px-3 py-1.5 text-xs font-bold ${isC ? 'bg-granate-600 text-white' : 'bg-slate-950 text-slate-400 hover:bg-slate-800'}">Convocat</button>
                         <button onclick="convSetStatus('${p.id}','N')" class="px-3 py-1.5 text-xs font-bold ${isN ? 'bg-rose-600 text-white' : 'bg-slate-950 text-slate-400 hover:bg-slate-800'}">No convocat</button>
                     </div>
                 </div>
