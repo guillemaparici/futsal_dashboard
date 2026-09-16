@@ -91,34 +91,38 @@
 <body class="h-full text-slate-100 flex flex-col md:flex-row md:overflow-hidden mode-coach">
 
     <!-- ===== PANTALLA D'ACCÉS (Supabase Auth) — tapa el tauler fins iniciar sessió ===== -->
-    <div id="auth-gate" class="fixed inset-0 z-[999] bg-slate-950 flex overflow-y-auto">
+    <div id="auth-gate" class="fixed inset-0 z-[999] bg-[#08090b] flex overflow-y-auto">
         <!-- PANEL ESQUERRE — identitat, només visible en pantalla ampla -->
-        <div class="hidden lg:flex lg:w-[44%] relative flex-col justify-between p-14 overflow-hidden bg-slate-900">
-            <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 28px 28px;"></div>
-            <div class="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-granate-600/20 blur-3xl"></div>
-            <div class="absolute -bottom-32 -right-16 w-[380px] h-[380px] rounded-full bg-granate-700/10 blur-3xl"></div>
+        <div class="hidden lg:flex lg:w-[52%] relative flex-col justify-between p-16 overflow-hidden">
+            <div class="absolute inset-0" style="background: linear-gradient(125deg, #08090b 0%, #08090b 26%, rgba(201,138,43,0.16) 42%, rgba(153,36,56,0.55) 50%, rgba(201,138,43,0.16) 58%, #08090b 74%, #08090b 100%); background-size: 200% 200%; animation: authSheen 16s ease-in-out infinite;"></div>
+            <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 26px 26px;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-granate-600/25 blur-[110px]"></div>
+            <style>@keyframes authSheen { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }</style>
+
             <div class="relative flex items-center gap-2.5">
                 <div class="w-3 h-3 rounded-[3px] bg-granate-500 rotate-45"></div>
-                <span class="font-bold text-sm tracking-tight">Tauler del cos tècnic</span>
+                <span class="font-bold text-sm tracking-tight text-white/90">Tauler del cos tècnic</span>
             </div>
+
             <div class="relative">
-                <div class="w-14 h-14 rounded-2xl bg-granate-600/15 border border-granate-500/25 flex items-center justify-center mb-8">
-                    <div class="w-5 h-5 rounded-[3px] bg-granate-500 rotate-45"></div>
+                <div class="w-16 h-16 rounded-[20px] bg-granate-500/15 border border-granate-400/30 flex items-center justify-center mb-10 shadow-[0_0_60px_-10px] shadow-granate-500/40">
+                    <div class="w-6 h-6 rounded-[4px] bg-granate-400 rotate-45"></div>
                 </div>
-                <h2 class="text-[34px] leading-[1.15] font-extrabold tracking-tight text-white mb-4">La gestió del teu<br>equip, sencera,<br>en un sol lloc.</h2>
-                <p class="text-[15px] text-slate-400 leading-relaxed max-w-[360px]">Plantilla, partits, entrenaments i estadístiques — sempre al dia, des de qualsevol dispositiu.</p>
+                <h2 class="text-[56px] leading-[1.05] font-extrabold tracking-tight text-white mb-6">La gestió del<br>teu equip,<br><span class="italic font-serif text-granate-400">sencera.</span></h2>
+                <p class="text-[17px] text-slate-300/80 leading-relaxed max-w-[400px] font-medium">Plantilla, partits, entrenaments i estadístiques — sempre al dia, des de qualsevol dispositiu.</p>
             </div>
-            <div class="relative text-[12px] text-slate-600">© 2026 · Fet per a entrenadors i clubs de futbol sala</div>
+
+            <div class="relative text-[12px] text-slate-500">© 2026 · Fet per a entrenadors i clubs de futbol sala</div>
         </div>
 
         <!-- PANEL DRET — formulari -->
-        <div class="flex-1 flex items-center justify-center p-6 sm:p-10">
+        <div class="flex-1 flex items-center justify-center p-6 sm:p-10 bg-slate-950">
             <div class="w-full max-w-[380px]">
                 <div class="flex items-center gap-2 mb-10 lg:hidden">
                     <div class="w-2.5 h-2.5 rounded-sm bg-granate-500 rotate-45"></div>
                     <span class="font-bold text-sm">Tauler del cos tècnic</span>
                 </div>
-                <h1 class="text-2xl font-extrabold tracking-tight mb-2">Inicia sessió</h1>
+                <h1 class="text-[28px] font-extrabold tracking-tight mb-2">Inicia sessió</h1>
                 <p class="text-sm text-slate-400 mb-8 leading-relaxed">Accedeix amb el compte que t'han creat. Si encara no en tens cap, demana'l al teu entrenador o coordinador.</p>
                 <label class="block text-xs font-semibold text-slate-400 mb-1.5">Correu electrònic</label>
                 <input type="email" id="ag-email" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-granate-500 focus:ring-4 focus:ring-granate-500/10 transition-all mb-4">
@@ -134,32 +138,33 @@
     </div>
 
     <!-- ===== ESTABLIR CONTRASENYA — en acceptar una invitació o recuperar l'accés ===== -->
-    <div id="set-password-gate" class="hidden fixed inset-0 z-[999] bg-slate-950 flex overflow-y-auto">
-        <div class="hidden lg:flex lg:w-[44%] relative flex-col justify-between p-14 overflow-hidden bg-slate-900">
-            <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 28px 28px;"></div>
-            <div class="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-granate-600/20 blur-3xl"></div>
-            <div class="absolute -bottom-32 -right-16 w-[380px] h-[380px] rounded-full bg-granate-700/10 blur-3xl"></div>
+    <div id="set-password-gate" class="hidden fixed inset-0 z-[999] bg-[#08090b] flex overflow-y-auto">
+        <div class="hidden lg:flex lg:w-[52%] relative flex-col justify-between p-16 overflow-hidden">
+            <div class="absolute inset-0" style="background: linear-gradient(125deg, #08090b 0%, #08090b 26%, rgba(201,138,43,0.16) 42%, rgba(153,36,56,0.55) 50%, rgba(201,138,43,0.16) 58%, #08090b 74%, #08090b 100%); background-size: 200% 200%; animation: authSheen 16s ease-in-out infinite;"></div>
+            <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 26px 26px;"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-granate-600/25 blur-[110px]"></div>
+
             <div class="relative flex items-center gap-2.5">
                 <div class="w-3 h-3 rounded-[3px] bg-granate-500 rotate-45"></div>
-                <span class="font-bold text-sm tracking-tight">Tauler del cos tècnic</span>
+                <span class="font-bold text-sm tracking-tight text-white/90">Tauler del cos tècnic</span>
             </div>
             <div class="relative">
-                <div class="w-14 h-14 rounded-2xl bg-granate-600/15 border border-granate-500/25 flex items-center justify-center mb-8">
-                    <div class="w-5 h-5 rounded-[3px] bg-granate-500 rotate-45"></div>
+                <div class="w-16 h-16 rounded-[20px] bg-granate-500/15 border border-granate-400/30 flex items-center justify-center mb-10 shadow-[0_0_60px_-10px] shadow-granate-500/40">
+                    <div class="w-6 h-6 rounded-[4px] bg-granate-400 rotate-45"></div>
                 </div>
-                <h2 class="text-[34px] leading-[1.15] font-extrabold tracking-tight text-white mb-4">Gairebé a punt.</h2>
-                <p class="text-[15px] text-slate-400 leading-relaxed max-w-[360px]">Un últim pas i ja tens accés directe al teu equip.</p>
+                <h2 class="text-[56px] leading-[1.05] font-extrabold tracking-tight text-white mb-6">Gairebé<br>a <span class="italic font-serif text-granate-400">punt.</span></h2>
+                <p class="text-[17px] text-slate-300/80 leading-relaxed max-w-[400px] font-medium">Un últim pas i ja tens accés directe al teu equip.</p>
             </div>
-            <div class="relative text-[12px] text-slate-600">© 2026 · Fet per a entrenadors i clubs de futbol sala</div>
+            <div class="relative text-[12px] text-slate-500">© 2026 · Fet per a entrenadors i clubs de futbol sala</div>
         </div>
 
-        <div class="flex-1 flex items-center justify-center p-6 sm:p-10">
+        <div class="flex-1 flex items-center justify-center p-6 sm:p-10 bg-slate-950">
             <div class="w-full max-w-[380px]">
                 <div class="flex items-center gap-2 mb-10 lg:hidden">
                     <div class="w-2.5 h-2.5 rounded-sm bg-granate-500 rotate-45"></div>
                     <span class="font-bold text-sm">Tauler del cos tècnic</span>
                 </div>
-                <h1 class="text-2xl font-extrabold tracking-tight mb-2">Tria la teva contrasenya</h1>
+                <h1 class="text-[28px] font-extrabold tracking-tight mb-2">Tria la teva contrasenya</h1>
                 <p class="text-sm text-slate-400 mb-8 leading-relaxed">Últim pas per accedir. A partir d'ara, fes-la servir per iniciar sessió.</p>
                 <label class="block text-xs font-semibold text-slate-400 mb-1.5">Contrasenya nova</label>
                 <input type="password" id="sp-password" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-granate-500 focus:ring-4 focus:ring-granate-500/10 transition-all mb-4">
@@ -220,14 +225,18 @@
     </div>
 
     <!-- ===== SELECCIÓ D'EQUIP — quan un coordinador té accés a més d'un ===== -->
-    <div id="team-picker" class="hidden fixed inset-0 z-[999] bg-slate-950 flex items-start sm:items-center justify-center p-4 sm:p-6 pt-10 sm:pt-6 overflow-y-auto">
-        <div class="w-full max-w-2xl py-10">
-            <div class="flex items-center gap-2 mb-10">
+    <div id="team-picker" class="hidden fixed inset-0 z-[999] bg-[#08090b] flex items-start sm:items-center justify-center p-4 sm:p-6 pt-10 sm:pt-6 overflow-y-auto">
+        <div class="pointer-events-none fixed inset-x-0 top-0 h-[420px] overflow-hidden">
+            <div class="absolute inset-0" style="background: linear-gradient(160deg, rgba(153,36,56,0.18) 0%, transparent 55%);"></div>
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full bg-granate-600/12 blur-[120px]"></div>
+        </div>
+        <div class="relative w-full max-w-2xl py-12">
+            <div class="flex items-center gap-2 mb-12">
                 <div class="w-2.5 h-2.5 rounded-sm bg-granate-500 rotate-45"></div>
-                <span class="font-bold text-sm tracking-tight">Tauler del cos tècnic</span>
+                <span class="font-bold text-sm tracking-tight text-white/90">Tauler del cos tècnic</span>
             </div>
-            <h1 class="text-[28px] font-extrabold tracking-tight mb-2">Tria l'equip</h1>
-            <p class="text-sm text-slate-400 mb-8">Tens accés a més d'un equip. Selecciona'n un per continuar.</p>
+            <h1 class="text-[36px] font-extrabold tracking-tight mb-3 text-white">Tria l'equip</h1>
+            <p class="text-[15px] text-slate-400 mb-9">Tens accés a més d'un equip. Selecciona'n un per continuar.</p>
 
             <div id="team-picker-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </div>
@@ -269,18 +278,22 @@
     </div>
 
     <!-- ===== PANELL D'ADMINISTRACIÓ — nomes visible per a app_admins ===== -->
-    <div id="admin-panel" class="hidden fixed inset-0 z-[1001] bg-slate-950 flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
-        <div class="w-full max-w-3xl py-10">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0"><i data-lucide="shield" class="w-4.5 h-4.5 text-amber-400"></i></div>
-                    <h1 class="text-[22px] font-extrabold tracking-tight">Panell d'administració</h1>
+    <div id="admin-panel" class="hidden fixed inset-0 z-[1001] bg-[#08090b] flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="pointer-events-none fixed inset-x-0 top-0 h-[420px] overflow-hidden">
+            <div class="absolute inset-0" style="background: linear-gradient(160deg, rgba(245,158,11,0.14) 0%, transparent 55%);"></div>
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full bg-amber-500/10 blur-[120px]"></div>
+        </div>
+        <div class="relative w-full max-w-3xl py-12">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-400/25 flex items-center justify-center shrink-0 shadow-[0_0_40px_-8px] shadow-amber-500/30"><i data-lucide="shield" class="w-5 h-5 text-amber-400"></i></div>
+                    <h1 class="text-[30px] font-extrabold tracking-tight text-white">Panell d'administració</h1>
                 </div>
                 <button onclick="appSignOut()" title="Tanca sessió" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-900 transition-colors"><i data-lucide="log-out" class="w-4 h-4"></i></button>
             </div>
-            <p class="text-sm text-slate-400 mb-7">Tots els clubs i equips que existeixen a l'aplicatiu.</p>
+            <p class="text-[15px] text-slate-400 mb-8">Tots els clubs i equips que existeixen a l'aplicatiu.</p>
 
-            <button onclick="openAdminCreateClub()" class="mb-7 inline-flex items-center gap-1.5 px-4 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-xl transition-all active:scale-[0.98]"><i data-lucide="plus" class="w-4 h-4"></i>Crea un club nou</button>
+            <button onclick="openAdminCreateClub()" class="mb-8 inline-flex items-center gap-1.5 px-4 py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-xl transition-all active:scale-[0.98]"><i data-lucide="plus" class="w-4 h-4"></i>Crea un club nou</button>
 
             <div id="admin-teams-list" class="space-y-2"></div>
         </div>
@@ -407,7 +420,7 @@
             </div>
         </div>
 
-        <div class="px-3.5 shrink-0">
+        <div class="px-3.5 flex-1 min-h-0 overflow-y-auto">
             <nav class="space-y-1 mb-3 opacity-40 pointer-events-none" id="main-nav">
                 <button onclick="switchTab('plantilla')" id="btn-plantilla" class="coach-only tab-btn w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-[13px] font-semibold transition-all bg-granate-600 text-white shadow-lg shadow-granate-900/40">
                     <i data-lucide="users" class="w-4 h-4"></i>
@@ -459,7 +472,7 @@
                 </button>
             </nav>
         </div>
-        <div class="flex-1 min-h-0 px-4 pb-2 overflow-hidden flex flex-col justify-end">
+        <div class="shrink-0 px-4 pb-2">
             <div class="coach-only border-t border-slate-800/80 pt-2 mt-1">
                 <div class="flex items-center justify-between mb-1">
                     <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Des de Claude</p>
@@ -521,7 +534,7 @@
             </div>
         </div>
 
-        <div class="coach-only p-3 border-t border-slate-800 bg-slate-950/40">
+        <div class="coach-only shrink-0 p-3 border-t border-slate-800 bg-slate-950/40">
             <div class="flex items-center gap-3 mb-2.5">
                 <div id="app-sidebar-user-initials" class="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-sm text-granate-400 shrink-0">
                     ··
