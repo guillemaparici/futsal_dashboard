@@ -3522,6 +3522,14 @@
                 return;
             }
             if (remoteAt > syncedAt) { applyRemote(remoteData); }
+            else if (!state.loaded) {
+                // Encara no tenim res carregat a la memòria (acabem d'entrar
+                // en aquest equip): carrega el núvol igualment, encara que
+                // la marca de temps digui que "no hi ha res nou" — aquesta
+                // marca només serveix per evitar recàrregues innecessàries
+                // a mitja sessió, no per decidir si cal la primera càrrega.
+                applyRemote(remoteData);
+            }
             else { setSyncedAt(remoteAt || Date.now()); refreshSyncUI(); }
         } catch (e) {
             console.warn('Sincronització en obrir ha fallat:', e);
