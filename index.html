@@ -563,8 +563,7 @@
             </div>
             <div class="flex gap-2 mt-3">
                 <button id="player-refresh-btn" onclick="manualPlayerRefresh()" title="Actualitza les dades" class="w-9 shrink-0 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-all flex items-center justify-center"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i></button>
-                <button onclick="playerLogout()" class="flex-1 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded-lg transition-all">Canvia de jugador</button>
-                <button id="player-back-coach" onclick="exitPlayerMode()" class="flex-1 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded-lg transition-all">Torna a entrenador</button>
+                <button onclick="appSignOut()" class="flex-1 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-semibold rounded-lg transition-all flex items-center justify-center gap-1.5"><i data-lucide="log-out" class="w-3.5 h-3.5"></i>Tanca sessió</button>
             </div>
         </div>
     </aside>
@@ -14259,8 +14258,16 @@
             }
         }
 
-        /* ---- Acceptar invitació / recuperar accés: cal triar contrasenya ---- */
-        let awaitingPasswordSetup = false;
+        /* ---- Acceptar invitació / recuperar accés: cal triar contrasenya ----
+           Es comprova de forma SÍNCRONA, mirant l'adreça directament, en
+           comptes de dependre només de l'esdeveniment (que és asíncron i
+           podia arribar tard — l'aplicació ja havia decidit deixar entrar
+           la persona directament abans que la contrasenya es demanés mai). */
+        let awaitingPasswordSetup = /[?&#]type=(invite|recovery)\b/.test(window.location.href);
+        if (awaitingPasswordSetup) {
+            document.getElementById('auth-gate').classList.add('hidden');
+            document.getElementById('set-password-gate').classList.remove('hidden');
+        }
         sb.auth.onAuthStateChange((event) => {
             if (event === 'PASSWORD_RECOVERY') {
                 awaitingPasswordSetup = true;
