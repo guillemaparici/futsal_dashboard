@@ -14439,8 +14439,13 @@
 
             // Reinicia l'estat local: si vius canviant d'equip dins la
             // mateixa sessió, no volem barrejar les dades d'un equip amb
-            // les de l'altre.
+            // les de l'altre. Cal buidar els arrays de veritat (applySaved
+            // amb un objecte buit) i no només la marca "loaded" — si no,
+            // un equip sense res encara al núvol (com un equip nou) es
+            // quedava mostrant per pantalla les dades de l'equip anterior.
+            if (typeof applySaved === 'function') applySaved({});
             if (typeof state !== 'undefined') state.loaded = false;
+            if (typeof renderAll === 'function') renderAll();
 
             // L'arrencada normal de la pàgina (DOMContentLoaded) ja s'ha
             // executat abans de saber l'equip, així que la sincronització
