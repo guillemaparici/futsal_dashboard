@@ -570,7 +570,7 @@
         </div>
 
         <div class="coach-only shrink-0 p-3 border-t border-slate-800 bg-slate-950/40">
-            <div class="flex items-center gap-3 mb-2.5">
+            <button onclick="openStaffModal()" title="Cos tècnic" class="w-full flex items-center gap-3 mb-2.5 -mx-1 px-1 py-1 rounded-lg hover:bg-slate-800/60 transition-colors text-left">
                 <div id="app-sidebar-user-initials" class="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-sm text-granate-400 shrink-0">
                     ··
                 </div>
@@ -578,7 +578,7 @@
                     <p id="app-sidebar-user-nom" class="text-xs font-semibold text-slate-200 truncate">Carregant…</p>
                     <p id="app-sidebar-user-rol" class="text-[10px] text-slate-400"></p>
                 </div>
-            </div>
+            </button>
             <div class="flex items-center gap-1.5">
                 <button onclick="openAppConfig()" title="Configuració" class="flex-1 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all">
                     <i data-lucide="settings" class="w-4 h-4"></i>
@@ -744,22 +744,20 @@
                             <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                                 <input type="text" id="squad-search" placeholder="Cerca jugador..." onkeyup="filterSquad()" class="flex-1 min-w-0 sm:min-w-[140px] px-3.5 py-2 text-xs rounded-lg bg-slate-950 border border-slate-800 text-slate-300 focus:outline-none focus:border-emerald-500 transition-all">
                                 <span id="squad-count" class="shrink-0 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded"></span>
+                                <label class="coach-only shrink-0 whitespace-nowrap flex items-center gap-1.5 text-[11px] text-slate-400 cursor-pointer">
+                                    <input type="checkbox" id="squad-show-extern" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
+                                    Sènior B
+                                </label>
+                                <label class="coach-only shrink-0 whitespace-nowrap flex items-center gap-1.5 text-[11px] text-slate-400 cursor-pointer">
+                                    <input type="checkbox" id="squad-show-baixa" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
+                                    Baixes
+                                </label>
                                 <div class="shrink-0 flex items-center bg-slate-950 border border-slate-800 rounded-lg p-0.5">
                                     <button id="squad-view-cards-btn" onclick="setSquadView('cards')" title="Vista de targetes" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i></button>
                                     <button id="squad-view-table-btn" onclick="setSquadView('table')" title="Vista de taula" class="w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-200 transition-all"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
                                 </div>
                                 <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
                             </div>
-                        </div>
-                        <div class="coach-only px-6 py-2.5 border-b border-slate-800/60 flex items-center justify-end gap-4">
-                            <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer">
-                                <input type="checkbox" id="squad-show-extern" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
-                                Mostra Sènior B
-                            </label>
-                            <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer">
-                                <input type="checkbox" id="squad-show-baixa" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
-                                Mostra les baixes
-                            </label>
                         </div>
                         <div id="squad-cards-grid" class="hidden space-y-6 p-6"></div>
                         <div id="squad-table-wrap" class="overflow-x-auto flex-1">
@@ -2272,6 +2270,25 @@
         </div>
     </div>
 
+    <!-- MODAL COS TÈCNIC (staff: llista separada dels jugadors) -->
+    <div id="staff-modal" class="coach-only hidden fixed inset-0 z-[65] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closeStaffModal()">
+        <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-bold text-white">Cos tècnic</p>
+                <button onclick="closeStaffModal()" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+            <p class="text-xs text-slate-400 -mt-2">Entrenadors i altres persones de l'staff — no compten com a jugadors: no surten a la plantilla, al minutatge ni al vídeo. Només poden rebre multes.</p>
+            <div id="staff-list" class="space-y-2"></div>
+            <div class="border-t border-slate-800 pt-3 space-y-2">
+                <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Afegeix algú a l'staff</p>
+                <input id="staff-new-name" placeholder="Nom" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500">
+                <input id="staff-new-carrec" placeholder="Càrrec (p. ex. 2n entrenador)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-granate-500">
+                <button onclick="addStaffMember()" class="w-full py-2.5 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-sm font-bold rounded-lg flex items-center justify-center gap-1.5"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix</button>
+            </div>
+        </div>
+    </div>
+
+
     <!-- MODAL JUGADOR (afegir / editar) -->
     <div id="player-modal-edit" class="coach-only hidden fixed inset-0 z-[65] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this)closePlayerEditor()">
         <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-5 space-y-3 max-h-[90vh] overflow-y-auto">
@@ -2988,7 +3005,7 @@
                 players: state.players, sessions: state.sessions, microOrder: state.microOrder,
                 weekly: state.weekly, indicators: state.indicators, model: state.model,
                 micros: state.micros, months: state.months, stats: state.stats,
-                match: state.match, video: state.video, matchArchive: state.matchArchive, sheetsFound: state.sheetsFound, routines: state.routines, routineCats: state.routineCats, competition: state.competition, competitions: state.competitions, fines: state.fines, sociograma: state.sociograma, convocatories: state.convocatories, convPlans: state.convPlans, playerNotes: state.playerNotes, scouting: state.scouting, matchCards: state.matchCards
+                match: state.match, video: state.video, matchArchive: state.matchArchive, sheetsFound: state.sheetsFound, routines: state.routines, routineCats: state.routineCats, competition: state.competition, competitions: state.competitions, fines: state.fines, sociograma: state.sociograma, convocatories: state.convocatories, convPlans: state.convPlans, playerNotes: state.playerNotes, scouting: state.scouting, matchCards: state.matchCards, staff: state.staff
             };
             const json = JSON.stringify(payload, dateReplacer);
             pushUndoSnapshot(json);   // desa la versió anterior abans de sobreescriure
@@ -3016,7 +3033,7 @@
             microOrder: d.microOrder || [], weekly: d.weekly || [], indicators: d.indicators || [],
             model: d.model || [], micros: d.micros || {}, months: d.months || [],
             stats: d.stats || null, match: d.match || null, video: d.video || null, matchArchive: d.matchArchive || [],
-            sheetsFound: d.sheetsFound || [], routines: d.routines || DEFAULT_RUTINES(), routineCats: Array.isArray(d.routineCats) ? d.routineCats : null, competition: d.competition || null, competitions: d.competitions || null, fines: d.fines || null, sociograma: d.sociograma || null, convocatories: d.convocatories || null, convPlans: (d.convPlans && typeof d.convPlans === 'object') ? d.convPlans : {}, playerNotes: (d.playerNotes && typeof d.playerNotes === 'object') ? d.playerNotes : {}, scouting: (d.scouting && typeof d.scouting === 'object') ? d.scouting : {}, matchCards: (d.matchCards && typeof d.matchCards === 'object') ? d.matchCards : {}, sv: d.sv || 0, loaded: true
+            sheetsFound: d.sheetsFound || [], routines: d.routines || DEFAULT_RUTINES(), routineCats: Array.isArray(d.routineCats) ? d.routineCats : null, competition: d.competition || null, competitions: d.competitions || null, fines: d.fines || null, sociograma: d.sociograma || null, convocatories: d.convocatories || null, convPlans: (d.convPlans && typeof d.convPlans === 'object') ? d.convPlans : {}, playerNotes: (d.playerNotes && typeof d.playerNotes === 'object') ? d.playerNotes : {}, scouting: (d.scouting && typeof d.scouting === 'object') ? d.scouting : {}, matchCards: (d.matchCards && typeof d.matchCards === 'object') ? d.matchCards : {}, staff: Array.isArray(d.staff) ? d.staff : [], sv: d.sv || 0, loaded: true
         });
         normalizePlayers();
         migrateState();
@@ -3080,18 +3097,19 @@
     }
 
     // Jugadors actius (per als llistats operatius: marcador, multes, PINs...).
-    // Exclou sempre el cos tècnic (staff): mai han d'aparèixer al minutatge,
-    // al vídeo, a la plantilla ni a cap estadística — només a les multes
-    // (vegeu finesPlayers, més avall).
-    const activePlayers = () => (state.players || []).filter(p => p.actiu !== false && !p.staff);
+    const activePlayers = () => (state.players || []).filter(p => p.actiu !== false);
     // Com activePlayers(), però exclou els jugadors convidats (Senior B, etc.).
     // Fer-lo servir a les vistes de gestió de plantilla fixa (graella, assistència,
     // multes, sociograma, competició interna, PINs) — mai al minutatge, vídeo o
     // estadístiques, on els convidats sí que han de poder aparèixer.
     const squadPlayers = () => activePlayers().filter(p => !p.extern);
-    // Com activePlayers(), però INCLOU el cos tècnic — les multes són l'única
-    // banda de l'aplicatiu on un entrenador/staff hi pot aparèixer.
-    const finesPlayers = () => (state.players || []).filter(p => p.actiu !== false);
+    // Cos tècnic: llista pròpia, separada dels jugadors — mai apareix a la
+    // plantilla, minutatge, vídeo ni estadístiques. Només a les multes.
+    function ensureStaff() { if (!Array.isArray(state.staff)) state.staff = []; return state.staff; }
+    const staffById = id => ensureStaff().find(s => String(s.id) === String(id));
+    // Cerca combinada jugador/staff, per a llocs (multes) on hi pot aparèixer
+    // qualsevol de les dues llistes.
+    const personById = id => playerById(id) || staffById(id);
 
     // Identificador únic curt (per a jugadors, marcadors, partits arxivats...).
     const vuid = () => 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -3168,7 +3186,7 @@
             weekly: state.weekly, indicators: state.indicators, model: state.model,
             micros: state.micros, months: state.months, stats: state.stats,
             match: state.match, video: state.video, matchArchive: state.matchArchive,
-            sheetsFound: state.sheetsFound, routines: state.routines, routineCats: state.routineCats, competition: state.competition, competitions: state.competitions, fines: state.fines, sociograma: state.sociograma, convocatories: state.convocatories, convPlans: state.convPlans, playerNotes: state.playerNotes, scouting: state.scouting, matchCards: state.matchCards
+            sheetsFound: state.sheetsFound, routines: state.routines, routineCats: state.routineCats, competition: state.competition, competitions: state.competitions, fines: state.fines, sociograma: state.sociograma, convocatories: state.convocatories, convPlans: state.convPlans, playerNotes: state.playerNotes, scouting: state.scouting, matchCards: state.matchCards, staff: state.staff
         };
     }
 
@@ -7267,6 +7285,15 @@
             || state.players.find(pp => (pp.nom || '').toLowerCase() === q);
         return p ? { id: String(p.id), ok: true, raw: nameStr } : { id: '', ok: false, raw: nameStr };
     }
+    // Com resolvePlayerRef, però també busca al cos tècnic — només cal a les
+    // multes, l'única banda on hi pot aparèixer algú que no sigui jugador.
+    function resolveFinesRef(nameStr) {
+        const r = resolvePlayerRef(nameStr);
+        if (r.ok) return r;
+        const q = String(nameStr || '').trim().toLowerCase();
+        const s = ensureStaff().find(ss => (ss.name || '').toLowerCase() === q);
+        return s ? { id: String(s.id), ok: true, raw: nameStr } : r;
+    }
     function openNarrationImport() {
         narrDraft = null;
         document.getElementById('narr-json-input').value = '';
@@ -7491,7 +7518,7 @@
         if (!Array.isArray(data.items) || !data.items.length) warnings.push('No hi ha cap multa al bloc de codi.');
         ensureFines();
         const items = (data.items || []).map((it, i) => {
-            const ref = resolvePlayerRef(it.player);
+            const ref = resolveFinesRef(it.player);
             if (!ref.ok) warnings.push(`Multa ${i + 1}: no trobo cap jugador amb el nom "${it.player}".`);
             const amount = numOrNull(it.amount);
             if (amount == null || amount <= 0) warnings.push(`Multa ${i + 1} (${it.player}): import no vàlid.`);
@@ -7572,7 +7599,7 @@
             : d.kind === 'competicio'
             ? `<div class="grid grid-cols-2 gap-1.5">${d.scores.map(s => `<div class="bg-slate-950/50 rounded-lg px-2.5 py-1.5 flex items-center justify-between"><span class="text-xs text-slate-300 truncate">${esc(s.ref.ok ? shortName(playerById(s.ref.id)) : (s.ref.raw || '?'))}</span><span class="text-xs font-extrabold text-amber-400 shrink-0">${s.points}</span></div>`).join('')}</div>`
             : d.kind === 'multes'
-            ? `<div class="space-y-1.5 max-h-56 overflow-y-auto">${d.items.map(it => `<div class="bg-slate-950/50 rounded-lg p-2.5 flex items-center justify-between gap-2"><div class="min-w-0"><p class="text-xs font-bold text-slate-200 truncate">${esc(it.ref.ok ? shortName(playerById(it.ref.id)) : (it.ref.raw || '?'))} <span class="text-slate-500 font-normal">· ${esc(it.date)}</span></p><p class="text-[10px] text-slate-500 truncate">${esc(it.concept)}</p></div><span class="shrink-0 text-xs font-extrabold ${it.paid ? 'text-emerald-400' : 'text-slate-400'}">${it.amount}€ <span class="font-semibold text-[9px] ${it.existing ? 'text-sky-400' : 'text-emerald-400'}">${it.existing ? '· marca pagat' : '· nova'}</span></span></div>`).join('')}</div>`
+            ? `<div class="space-y-1.5 max-h-56 overflow-y-auto">${d.items.map(it => `<div class="bg-slate-950/50 rounded-lg p-2.5 flex items-center justify-between gap-2"><div class="min-w-0"><p class="text-xs font-bold text-slate-200 truncate">${esc(it.ref.ok ? (personById(it.ref.id) || {}).name || it.ref.raw : (it.ref.raw || '?'))} <span class="text-slate-500 font-normal">· ${esc(it.date)}</span></p><p class="text-[10px] text-slate-500 truncate">${esc(it.concept)}</p></div><span class="shrink-0 text-xs font-extrabold ${it.paid ? 'text-emerald-400' : 'text-slate-400'}">${it.amount}€ <span class="font-semibold text-[9px] ${it.existing ? 'text-sky-400' : 'text-emerald-400'}">${it.existing ? '· marca pagat' : '· nova'}</span></span></div>`).join('')}</div>`
             : '';
         box.innerHTML = `
             ${headline}
@@ -8129,9 +8156,7 @@
 
         // Mostra els actius i, a més, qualsevol jugador de baixa que tingui
         // dades en AQUEST partit (minuts o registres), per no amagar historial.
-        // El cos tècnic (staff) mai hi surt, tingui dades o no.
         const rowsPlayers = state.players.filter(p => {
-            if (p.staff) return false;
             if (p.actiu !== false) return true;
             const d = m.data && m.data[String(p.id)];
             const hasData = d && (d.gols || d.assist || d.gfp || d.gcp);
@@ -8438,7 +8463,7 @@
 
     /* ----------------------------- exportació ----------------------------- */
     function matchRows() {
-        return state.players.filter(p => !p.staff).map(p => ({ name: p.name, values: EXPORT_COLS.map(c => c.get(p.id)) }));
+        return state.players.map(p => ({ name: p.name, values: EXPORT_COLS.map(c => c.get(p.id)) }));
     }
 
     function matchFileName() {
@@ -10828,7 +10853,7 @@
         catSel.value = mk.cat || 'altre';
         document.getElementById('mk-note').value = mk.note || '';
         const chosen = (mk.players || []).map(String);
-        const pickable = state.players.filter(p => (p.actiu !== false && !p.staff) || chosen.includes(String(p.id)));
+        const pickable = state.players.filter(p => p.actiu !== false || chosen.includes(String(p.id)));
         document.getElementById('mk-players').innerHTML = pickable.map(p => {
             const on = chosen.includes(String(p.id));
             return `<button type="button" data-pid="${esc(p.id)}" onclick="toggleMkPlayer(this)" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all ${on ? 'bg-granate-600 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}">${esc(shortName(p))}</button>`;
@@ -11526,11 +11551,11 @@
         const totEl = document.getElementById('fine-total'); if (totEl) totEl.innerText = totalPend.toFixed(2).replace('.', ',') + ' €';
         const body = document.getElementById('fine-list'); if (!body) return;
         body.innerHTML = items.length ? items.slice().reverse().map(x => {
-            const p = playerById(x.playerId);
+            const p = personById(x.playerId);
             const amt = (Number(x.amount) || 0).toFixed(2).replace('.', ',');
             return `<div class="flex items-center gap-3 bg-slate-950/40 border ${x.paid ? 'border-slate-800/50' : 'border-rose-500/20'} rounded-lg px-3 py-2">
                 <div class="min-w-0 flex-1">
-                    <div class="flex items-center gap-2 flex-wrap"><span class="text-sm font-semibold ${x.paid ? 'text-slate-400 line-through' : 'text-slate-100'}">${esc(p ? p.name : 'Jugador')}</span><span class="text-[10px] text-slate-500">${esc(x.date || '')}</span>${x.paid ? '<span class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">PAGAT</span>' : ''}</div>
+                    <div class="flex items-center gap-2 flex-wrap"><span class="text-sm font-semibold ${x.paid ? 'text-slate-400 line-through' : 'text-slate-100'}">${esc(p ? p.name : 'Jugador')}${p && p.carrec ? ` <span class="text-[9px] font-bold text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded">${esc(p.carrec)}</span>` : ''}</span><span class="text-[10px] text-slate-500">${esc(x.date || '')}</span>${x.paid ? '<span class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded">PAGAT</span>' : ''}</div>
                     <p class="text-xs text-slate-400 truncate">${esc(x.concept || '')}</p>
                 </div>
                 <span class="text-sm font-extrabold shrink-0 tabular-nums ${x.paid ? 'text-slate-500' : 'text-rose-400'}">${amt} €</span>
@@ -11545,8 +11570,10 @@
     function addFine() {
         if (!canEditFines()) return;
         ensureFines();
-        if (!finesPlayers().length) { toast('Afegeix jugadors a la plantilla primer.'); return; }
-        document.getElementById('fine-player').innerHTML = finesPlayers().map(p => `<option value="${esc(p.id)}">${esc(p.name)}${p.staff ? ' (staff)' : ''}</option>`).join('');
+        const staffList = ensureStaff();
+        if (!squadPlayers().length && !staffList.length) { toast('Afegeix jugadors a la plantilla primer.'); return; }
+        document.getElementById('fine-player').innerHTML = squadPlayers().map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('')
+            + (staffList.length ? `<optgroup label="Cos tècnic">${staffList.map(s => `<option value="${esc(s.id)}">${esc(s.name)}${s.carrec ? ' · ' + esc(s.carrec) : ''}</option>`).join('')}</optgroup>` : '');
         document.getElementById('fine-concept').value = '';
         document.getElementById('fine-amount').value = '';
         document.getElementById('fine-modal').classList.remove('hidden');
@@ -11565,6 +11592,48 @@
     }
     function toggleFinePaid(id) { if (!canEditFines()) return; ensureFines(); const x = state.fines.items.find(i => i.id === id); if (x) { x.paid = !x.paid; renderFines(); saveSoon(); } }
     function deleteFine(id) { if (!canEditFines()) return; if (!confirm('Eliminar aquesta multa?')) return; ensureFines(); state.fines.items = state.fines.items.filter(i => i.id !== id); renderFines(); saveSoon(); }
+
+    /* ----------------------------- cos tècnic ----------------------------- */
+    function openStaffModal() {
+        renderStaffModal();
+        document.getElementById('staff-modal').classList.remove('hidden');
+    }
+    function closeStaffModal() { document.getElementById('staff-modal').classList.add('hidden'); }
+    function renderStaffModal() {
+        const list = ensureStaff();
+        const el = document.getElementById('staff-list');
+        el.innerHTML = list.length ? list.map(s => `
+            <div class="flex items-center gap-2 bg-slate-950/50 border border-slate-800 rounded-lg px-3 py-2">
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[11px] font-bold text-granate-400 shrink-0">${esc((s.name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase())}</div>
+                <div class="min-w-0 flex-1">
+                    <input value="${esc(s.name || '')}" onchange="updateStaffMember('${s.id}','name',this.value)" class="w-full bg-transparent text-sm font-semibold text-slate-100 focus:outline-none focus:bg-slate-900 rounded px-1 -mx-1">
+                    <input value="${esc(s.carrec || '')}" placeholder="Càrrec" onchange="updateStaffMember('${s.id}','carrec',this.value)" class="w-full bg-transparent text-xs text-slate-400 focus:outline-none focus:bg-slate-900 rounded px-1 -mx-1 mt-0.5">
+                </div>
+                <button onclick="removeStaffMember('${s.id}')" aria-label="Elimina" class="shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-rose-400"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i></button>
+            </div>`).join('') : `<p class="text-center text-xs text-slate-500 py-4">Encara no hi ha ningú a l'staff.</p>`;
+        lucide.createIcons();
+    }
+    function addStaffMember() {
+        const nameEl = document.getElementById('staff-new-name'), carrecEl = document.getElementById('staff-new-carrec');
+        const name = nameEl.value.trim();
+        if (!name) { toast('Posa un nom.'); return; }
+        ensureStaff().push({ id: vuid(), name, carrec: carrecEl.value.trim() });
+        nameEl.value = ''; carrecEl.value = '';
+        renderStaffModal(); saveSoon();
+        if (typeof renderFines === 'function') renderFines();
+    }
+    function updateStaffMember(id, field, value) {
+        const s = staffById(id); if (!s) return;
+        s[field] = value.trim();
+        saveSoon();
+        if (typeof renderFines === 'function') renderFines();
+    }
+    function removeStaffMember(id) {
+        if (!confirm('Treure aquesta persona de l\'staff?')) return;
+        state.staff = ensureStaff().filter(s => String(s.id) !== String(id));
+        renderStaffModal(); saveSoon();
+        if (typeof renderFines === 'function') renderFines();
+    }
 
     // Genera un PDF visual amb el resum de multes per jugador, pensat per
     // penjar-lo directament al grup de WhatsApp de l'equip.
