@@ -522,7 +522,7 @@
                         <span id="undo-count" class="hidden absolute -top-1 -right-1 min-w-[14px] h-[14px] px-0.5 bg-amber-500 text-slate-900 text-[8px] font-bold rounded-full flex items-center justify-center leading-none"></span>
                     </button>
                 </div>
-                <textarea id="side-narr-input" rows="1" placeholder="Enganxa aquí el codi..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2 py-1 text-[10px] text-slate-200 font-mono placeholder-slate-600 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+                <textarea id="side-narr-input" rows="1" placeholder="Enganxa aquí el codi..." onpaste="setTimeout(analyzeSideNarration, 30)" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-2 py-1 text-[10px] text-slate-200 font-mono placeholder-slate-600 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
                 <div class="flex gap-1 mt-1">
                     <button onclick="pasteSideNarration()" title="Enganxa del porta-retalls" class="shrink-0 w-7 h-7 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg flex items-center justify-center"><i data-lucide="clipboard-paste" class="w-3 h-3"></i></button>
                     <button onclick="analyzeSideNarration()" class="flex-1 py-1 bg-granate-600 hover:bg-granate-500 text-white text-[10px] font-bold rounded-lg">Analitza</button>
@@ -751,7 +751,11 @@
                                 <button onclick="openPlayerEditor()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-granate-600 hover:bg-granate-700 shadow-lg shadow-granate-900/30 text-white text-xs font-bold rounded-lg transition-all whitespace-nowrap"><i data-lucide="user-plus" class="w-3.5 h-3.5"></i>Afegeix jugador</button>
                             </div>
                         </div>
-                        <div class="coach-only px-6 py-2.5 border-b border-slate-800/60 flex items-center justify-end">
+                        <div class="coach-only px-6 py-2.5 border-b border-slate-800/60 flex items-center justify-end gap-4">
+                            <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer">
+                                <input type="checkbox" id="squad-show-extern" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
+                                Mostra Sènior B
+                            </label>
                             <label class="flex items-center gap-2 text-[11px] text-slate-400 cursor-pointer">
                                 <input type="checkbox" id="squad-show-baixa" onchange="renderSquad()" class="accent-slate-500 w-3.5 h-3.5">
                                 Mostra les baixes
@@ -1299,7 +1303,7 @@
                                     <p id="detail-uc" class="text-sm font-extrabold text-emerald-400"></p>
                                 </div>
                             </div>
-                            <button onclick="openNarrationImport()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-bold rounded-xl transition-all"><i data-lucide="mic" class="w-3.5 h-3.5"></i><span>Des de Claude</span></button>
+                            <button onclick="openNarrationImportAndPaste()" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-bold rounded-xl transition-all"><i data-lucide="mic" class="w-3.5 h-3.5"></i><span>Des de Claude</span></button>
                             <button onclick="toggleDayEdit()" id="day-edit-btn" class="coach-only shrink-0 inline-flex items-center gap-1.5 px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition-all"><i data-lucide="pencil" class="w-3.5 h-3.5"></i><span id="day-edit-label">Edita</span></button>
                         </div>
                     </div>
@@ -1632,7 +1636,7 @@
                         <div class="flex items-center justify-between gap-3 mb-5">
                             <h4 class="font-bold text-white text-base">Context del partit</h4>
                             <div class="flex items-center gap-3">
-                                <button onclick="openNarrationImport()" class="text-[10px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"><i data-lucide="mic" class="w-3 h-3"></i>Des de Claude</button>
+                                <button onclick="openNarrationImportAndPaste()" class="text-[10px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1"><i data-lucide="mic" class="w-3 h-3"></i>Des de Claude</button>
                                 <button onclick="resetMatch()" class="text-[10px] font-semibold text-slate-500 hover:text-rose-400 underline transition-colors">Nou partit (esborra tot)</button>
                             </div>
                         </div>
@@ -2535,7 +2539,7 @@
             </div>
             <div class="p-5 overflow-y-auto space-y-4">
                 <div id="narr-step-paste">
-                    <textarea id="narr-json-input" rows="10" placeholder='{"kind": "partit" | "entreno", ...}' class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-emerald-500"></textarea>
+                    <textarea id="narr-json-input" rows="10" placeholder='{"kind": "partit" | "entreno" | "multes", ...}' onpaste="setTimeout(handleNarrJsonPaste, 30)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-emerald-500"></textarea>
                     <div class="flex gap-2 mt-3">
                         <button onclick="pasteNarrationFromClipboard()" class="px-3 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg flex items-center gap-1.5"><i data-lucide="clipboard-paste" class="w-4 h-4"></i>Enganxa</button>
                         <button onclick="analyzeNarration()" class="flex-1 py-2.5 bg-granate-600 hover:bg-granate-500 text-white text-sm font-bold rounded-lg">Analitza</button>
@@ -3076,12 +3080,18 @@
     }
 
     // Jugadors actius (per als llistats operatius: marcador, multes, PINs...).
-    const activePlayers = () => (state.players || []).filter(p => p.actiu !== false);
+    // Exclou sempre el cos tècnic (staff): mai han d'aparèixer al minutatge,
+    // al vídeo, a la plantilla ni a cap estadística — només a les multes
+    // (vegeu finesPlayers, més avall).
+    const activePlayers = () => (state.players || []).filter(p => p.actiu !== false && !p.staff);
     // Com activePlayers(), però exclou els jugadors convidats (Senior B, etc.).
     // Fer-lo servir a les vistes de gestió de plantilla fixa (graella, assistència,
     // multes, sociograma, competició interna, PINs) — mai al minutatge, vídeo o
     // estadístiques, on els convidats sí que han de poder aparèixer.
     const squadPlayers = () => activePlayers().filter(p => !p.extern);
+    // Com activePlayers(), però INCLOU el cos tècnic — les multes són l'única
+    // banda de l'aplicatiu on un entrenador/staff hi pot aparèixer.
+    const finesPlayers = () => (state.players || []).filter(p => p.actiu !== false);
 
     // Identificador únic curt (per a jugadors, marcadors, partits arxivats...).
     const vuid = () => 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -4610,10 +4620,20 @@
     function renderSquad() {
         const body = document.getElementById('squad-table-body');
         const showBaixa = !!(document.getElementById('squad-show-baixa') || {}).checked;
+        const showExtern = !!(document.getElementById('squad-show-extern') || {}).checked;
         const actius = squadPlayers();
-        const list = showBaixa ? state.players : actius;
-        const nBaixa = state.players.length - actius.length;
-        document.getElementById('squad-count').innerText = `${actius.length} jugador${actius.length === 1 ? '' : 's'}` + (nBaixa ? ` · ${nBaixa} baixa${nBaixa === 1 ? '' : 'es'}` : '');
+        const nonStaff = state.players.filter(p => !p.staff);
+        // El cos tècnic (staff) no surt mai a la plantilla, es marquin o no
+        // aquests dos interruptors. Baixes i Sènior B ara es controlen per
+        // separat: abans anaven junts sota "Mostra les baixes".
+        const list = nonStaff
+            .filter(p => showBaixa || p.actiu !== false)
+            .filter(p => showExtern || !p.extern);
+        const nBaixa = nonStaff.filter(p => p.actiu === false).length;
+        const nExtern = nonStaff.filter(p => p.actiu !== false && p.extern).length;
+        document.getElementById('squad-count').innerText = `${actius.length} jugador${actius.length === 1 ? '' : 's'}`
+            + (nBaixa ? ` · ${nBaixa} baixa${nBaixa === 1 ? '' : 'es'}` : '')
+            + (nExtern ? ` · ${nExtern} Sènior B` : '');
 
         if (!state.players.length) {
             body.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-xs text-slate-500">Encara no hi ha jugadors. Prem <strong>Afegeix jugador</strong> o carrega un Excel amb la pestanya <strong>Plantilla</strong>.</td></tr>`;
@@ -4909,7 +4929,7 @@
         const initials = (p.name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
         const rows = computePlayerEvolution(p.id);
         const t = rows.reduce((a, r) => ({ min: a.min + r.minutes, gols: a.gols + r.gols, assist: a.assist + r.assist }), { min: 0, gols: 0, assist: 0 });
-        const badges = `${p.extern ? `<span class="text-[8px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-600 text-white shrink-0">CONVIDAT</span>` : ''}${baixa ? `<span class="text-[8px] font-bold uppercase tracking-wider text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded shrink-0">Baixa</span>` : ''}`;
+        const badges = `${p.extern ? `<span class="text-[8px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-600 text-white shrink-0">SÈNIOR B</span>` : ''}${baixa ? `<span class="text-[8px] font-bold uppercase tracking-wider text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded shrink-0">Baixa</span>` : ''}`;
         return `<button onclick="openPlayerProfile('${esc(p.id)}')" class="squad-card group relative text-left bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl hover:border-granate-500/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-granate-950/20 transition-all duration-200 flex items-center gap-3 p-3 sm:block sm:p-4 ${baixa ? 'opacity-50' : ''}">
                 <div class="relative w-12 h-12 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center font-black text-sm text-granate-300 shrink-0 sm:mb-3">
                     ${esc(initials)}
@@ -7255,6 +7275,37 @@
         document.getElementById('narr-modal-footer').classList.add('hidden');
         document.getElementById('narr-modal').classList.remove('hidden');
     }
+    // Un bloc de codi vàlid per a aquest sistema sempre és un objecte JSON
+    // amb un camp "kind" — comprovació ràpida abans d'intentar-hi res, per
+    // no molestar si el porta-retalls té una altra cosa (un enllaç, text
+    // solt...).
+    function looksLikeNarrationCode(t) {
+        if (!t || t[0] !== '{' || t[t.length - 1] !== '}') return false;
+        try { const d = JSON.parse(t); return d && typeof d === 'object' && 'kind' in d; }
+        catch (e) { return false; }
+    }
+    // Com openNarrationImport, però a més intenta llegir el porta-retalls
+    // tot seguit (encara dins el mateix gest de l'usuari, el clic al botó
+    // "Des de Claude") i, si hi ha un codi vàlid, l'analitza directe —
+    // estalvia el pas d'enganxar i el d'"Analitza".
+    function openNarrationImportAndPaste() {
+        openNarrationImport();
+        if (!navigator.clipboard || !navigator.clipboard.readText) return;
+        navigator.clipboard.readText().then(txt => {
+            const t = (txt || '').trim();
+            const box = document.getElementById('narr-json-input');
+            if (t && looksLikeNarrationCode(t) && !box.value.trim()) {
+                box.value = t;
+                analyzeNarration();
+            }
+        }).catch(() => {});
+    }
+    // En enganxar al quadre gran, analitza directe si el contingut ja és un
+    // codi vàlid — sense haver de prémer "Analitza".
+    function handleNarrJsonPaste() {
+        const t = document.getElementById('narr-json-input').value.trim();
+        if (looksLikeNarrationCode(t)) analyzeNarration();
+    }
     function closeNarrationImport() { narrDraft = null; document.getElementById('narr-modal').classList.add('hidden'); }
     function backToNarrationPaste() {
         document.getElementById('narr-step-paste').classList.remove('hidden');
@@ -7293,6 +7344,7 @@
         else if (data.kind === 'notes') narrDraft = buildNotesDraft(data);
         else if (data.kind === 'scouting') narrDraft = buildScoutingDraft(data);
         else if (data.kind === 'competicio') narrDraft = buildCompeticioDraft(data);
+        else if (data.kind === 'multes') narrDraft = buildFinesDraft(data);
         else narrDraft = buildMatchDraft(data);
         renderNarrationPreview();
     }
@@ -7427,6 +7479,53 @@
         return { kind: 'entreno', date: data.date, dateObj, existingSession, exercises, attendance, warnings };
     }
 
+    /* ---------------------------- multes ------------------------------ */
+    // { kind:'multes', items:[{player:'Jan', date:'2026-09-10', amount:3,
+    //   concept:'Multa', paid:true}, ...] }
+    // Si ja existeix una multa pendent del mateix jugador, data i import,
+    // NOMÉS s'actualitza (es marca com a pagada) en lloc de duplicar-la —
+    // així un mateix missatge de WhatsApp es pot enganxar per registrar
+    // multes noves i per marcar-ne de pagades alhora.
+    function buildFinesDraft(data) {
+        const warnings = [];
+        if (!Array.isArray(data.items) || !data.items.length) warnings.push('No hi ha cap multa al bloc de codi.');
+        ensureFines();
+        const items = (data.items || []).map((it, i) => {
+            const ref = resolvePlayerRef(it.player);
+            if (!ref.ok) warnings.push(`Multa ${i + 1}: no trobo cap jugador amb el nom "${it.player}".`);
+            const amount = numOrNull(it.amount);
+            if (amount == null || amount <= 0) warnings.push(`Multa ${i + 1} (${it.player}): import no vàlid.`);
+            const dateObj = it.date ? toDate(it.date) : null;
+            if (it.date && (!dateObj || isNaN(dateObj))) warnings.push(`Multa ${i + 1} (${it.player}): data "${it.date}" no vàlida (fes servir AAAA-MM-DD).`);
+            const dateDisplay = dateObj && !isNaN(dateObj) ? dateObj.toLocaleDateString('ca-ES') : (it.date || new Date().toLocaleDateString('ca-ES'));
+            const concept = (it.concept || 'Multa').trim();
+            const paid = !!it.paid;
+            let existing = null;
+            if (ref.ok && ref.id && amount != null) {
+                existing = state.fines.items.find(f => String(f.playerId) === String(ref.id) && f.date === dateDisplay && Number(f.amount) === Number(amount) && !f.paid);
+            }
+            return { ref, amount, date: dateDisplay, concept, paid, existing };
+        });
+        return { kind: 'multes', items, warnings };
+    }
+    function commitFinesNarration(d) {
+        ensureFines();
+        let created = 0, updated = 0;
+        d.items.forEach(it => {
+            if (!it.ref || !it.ref.ok || !it.ref.id || it.amount == null) return;
+            if (it.existing) {
+                if (it.paid && !it.existing.paid) { it.existing.paid = true; updated++; }
+            } else {
+                state.fines.items.push({ id: 'fine_' + Date.now() + '_' + Math.floor(Math.random() * 1000), playerId: String(it.ref.id), concept: it.concept, amount: it.amount, date: it.date, paid: it.paid });
+                created++;
+            }
+        });
+        closeNarrationImport();
+        if (typeof renderFines === 'function') renderFines();
+        saveSoon();
+        toast(`Multes: ${created} de noves, ${updated} marcada${updated === 1 ? '' : 's'} com a pagada${updated === 1 ? '' : 's'}.`);
+    }
+
     function renderNarrationPreview() {
         const d = narrDraft;
         const box = document.getElementById('narr-step-preview');
@@ -7444,6 +7543,10 @@
             ['punts', d.points.length, 'text-indigo-400']
         ] : d.kind === 'competicio' ? [
             ['puntuacions', d.scores.length, 'text-amber-400']
+        ] : d.kind === 'multes' ? [
+            ['multes noves', d.items.filter(x => !x.existing).length, 'text-emerald-400'],
+            ['marcades pagades', d.items.filter(x => x.existing && x.paid).length, 'text-sky-400'],
+            ['import total', d.items.reduce((a, x) => a + (x.amount || 0), 0) + '€', 'text-amber-400']
         ] : (() => {
             const count = t => d.events.filter(e => e.type === t).length;
             return [
@@ -7468,6 +7571,8 @@
             ? `<ul class="space-y-1">${d.points.map(pt => `<li class="text-xs text-slate-300 flex gap-2"><span class="text-indigo-400 shrink-0">•</span>${esc(pt)}</li>`).join('')}</ul>`
             : d.kind === 'competicio'
             ? `<div class="grid grid-cols-2 gap-1.5">${d.scores.map(s => `<div class="bg-slate-950/50 rounded-lg px-2.5 py-1.5 flex items-center justify-between"><span class="text-xs text-slate-300 truncate">${esc(s.ref.ok ? shortName(playerById(s.ref.id)) : (s.ref.raw || '?'))}</span><span class="text-xs font-extrabold text-amber-400 shrink-0">${s.points}</span></div>`).join('')}</div>`
+            : d.kind === 'multes'
+            ? `<div class="space-y-1.5 max-h-56 overflow-y-auto">${d.items.map(it => `<div class="bg-slate-950/50 rounded-lg p-2.5 flex items-center justify-between gap-2"><div class="min-w-0"><p class="text-xs font-bold text-slate-200 truncate">${esc(it.ref.ok ? shortName(playerById(it.ref.id)) : (it.ref.raw || '?'))} <span class="text-slate-500 font-normal">· ${esc(it.date)}</span></p><p class="text-[10px] text-slate-500 truncate">${esc(it.concept)}</p></div><span class="shrink-0 text-xs font-extrabold ${it.paid ? 'text-emerald-400' : 'text-slate-400'}">${it.amount}€ <span class="font-semibold text-[9px] ${it.existing ? 'text-sky-400' : 'text-emerald-400'}">${it.existing ? '· marca pagat' : '· nova'}</span></span></div>`).join('')}</div>`
             : '';
         box.innerHTML = `
             ${headline}
@@ -7490,6 +7595,7 @@
         else if (narrDraft.kind === 'notes') commitNotesNarration(narrDraft);
         else if (narrDraft.kind === 'scouting') commitScoutingNarration(narrDraft);
         else if (narrDraft.kind === 'competicio') commitCompeticioNarration(narrDraft);
+        else if (narrDraft.kind === 'multes') commitFinesNarration(narrDraft);
         else commitMatchNarration(narrDraft);
     }
 
@@ -8023,7 +8129,9 @@
 
         // Mostra els actius i, a més, qualsevol jugador de baixa que tingui
         // dades en AQUEST partit (minuts o registres), per no amagar historial.
+        // El cos tècnic (staff) mai hi surt, tingui dades o no.
         const rowsPlayers = state.players.filter(p => {
+            if (p.staff) return false;
             if (p.actiu !== false) return true;
             const d = m.data && m.data[String(p.id)];
             const hasData = d && (d.gols || d.assist || d.gfp || d.gcp);
@@ -8330,7 +8438,7 @@
 
     /* ----------------------------- exportació ----------------------------- */
     function matchRows() {
-        return state.players.map(p => ({ name: p.name, values: EXPORT_COLS.map(c => c.get(p.id)) }));
+        return state.players.filter(p => !p.staff).map(p => ({ name: p.name, values: EXPORT_COLS.map(c => c.get(p.id)) }));
     }
 
     function matchFileName() {
@@ -8567,7 +8675,7 @@
         const parts = p.name.split(' ').filter(Boolean);
         const initials = ((parts[0] || '')[0] || '') + ((parts[1] || '')[0] || '');
         document.getElementById('pm-avatar').innerText = (initials || p.name.slice(0, 2)).toUpperCase();
-        document.getElementById('pm-dorsal').innerText = p.extern ? 'Convidat (Senior B)' : (p.dorsal != null ? `Dorsal ${p.dorsal}` : (p.actiu === false ? 'Baixa' : 'Sense dorsal'));
+        document.getElementById('pm-dorsal').innerText = p.extern ? 'Sènior B' : (p.dorsal != null ? `Dorsal ${p.dorsal}` : (p.actiu === false ? 'Baixa' : 'Sense dorsal'));
         document.getElementById('pm-name').innerText = p.name;
 
         const age = ageOf(p.anyNaixement);
@@ -10720,7 +10828,7 @@
         catSel.value = mk.cat || 'altre';
         document.getElementById('mk-note').value = mk.note || '';
         const chosen = (mk.players || []).map(String);
-        const pickable = state.players.filter(p => p.actiu !== false || chosen.includes(String(p.id)));
+        const pickable = state.players.filter(p => (p.actiu !== false && !p.staff) || chosen.includes(String(p.id)));
         document.getElementById('mk-players').innerHTML = pickable.map(p => {
             const on = chosen.includes(String(p.id));
             return `<button type="button" data-pid="${esc(p.id)}" onclick="toggleMkPlayer(this)" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all ${on ? 'bg-granate-600 text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}">${esc(shortName(p))}</button>`;
@@ -11437,8 +11545,8 @@
     function addFine() {
         if (!canEditFines()) return;
         ensureFines();
-        if (!squadPlayers().length) { toast('Afegeix jugadors a la plantilla primer.'); return; }
-        document.getElementById('fine-player').innerHTML = squadPlayers().map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+        if (!finesPlayers().length) { toast('Afegeix jugadors a la plantilla primer.'); return; }
+        document.getElementById('fine-player').innerHTML = finesPlayers().map(p => `<option value="${esc(p.id)}">${esc(p.name)}${p.staff ? ' (staff)' : ''}</option>`).join('');
         document.getElementById('fine-concept').value = '';
         document.getElementById('fine-amount').value = '';
         document.getElementById('fine-modal').classList.remove('hidden');
