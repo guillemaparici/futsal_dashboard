@@ -1005,26 +1005,27 @@
                 <div class="flex justify-end">
                     <button onclick="exportSeasonPDF()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-bold rounded-lg flex items-center gap-1.5"><i data-lucide="file-down" class="w-3.5 h-3.5 text-emerald-400"></i>Informe de temporada (PDF)</button>
                 </div>
-                <div id="danger-windows-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="alarm-clock" class="w-4 h-4 text-rose-400"></i>Finestres de perill</p>
-                        <span id="danger-windows-count" class="text-[10px] text-slate-500"></span>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mb-3">Gols marcats i encaixats per trams de la part, sumant tots els partits arxivats.</p>
-                    <div class="relative h-56"><canvas id="dangerWindowsChart"></canvas></div>
-                    <p id="danger-windows-inf-note" class="text-[9px] text-slate-600 mt-2"></p>
-                </div>
-                <div id="season-form-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>Forma recent</p>
-                        <div id="season-form-strip" class="flex items-center gap-1"></div>
-                    </div>
-                    <p class="text-[11px] text-slate-500 mb-3">Diferència de gols partit a partit, en ordre cronològic.</p>
-                    <div class="relative h-48"><canvas id="seasonFormChart"></canvas></div>
-                </div>
 
                     <!-- MILLORA 3: Vista estadístiques d'equip -->
                     <div id="stats-team-view" class="hidden space-y-6">
+                        <div id="danger-windows-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
+                            <div class="flex items-center justify-between gap-2 mb-1">
+                                <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="alarm-clock" class="w-4 h-4 text-rose-400"></i>Finestres de perill</p>
+                                <span id="danger-windows-count" class="text-[10px] text-slate-500"></span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mb-3">Gols marcats i encaixats per trams de la part, sumant tots els partits arxivats.</p>
+                            <div class="relative h-56"><canvas id="dangerWindowsChart"></canvas></div>
+                            <p id="danger-windows-inf-note" class="text-[9px] text-slate-600 mt-2"></p>
+                        </div>
+                        <div id="season-form-card" class="hidden bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-5">
+                            <div class="flex items-center justify-between gap-2 mb-1">
+                                <p class="text-sm font-bold text-white flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4 text-sky-400"></i>Forma recent</p>
+                                <div id="season-form-strip" class="flex items-center gap-1"></div>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mb-3">Diferència de gols partit a partit, en ordre cronològic.</p>
+                            <div class="relative h-48"><canvas id="seasonFormChart"></canvas></div>
+                        </div>
+
                         <!-- Dinàmica de gols -->
                         <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-6">
                             <div class="flex items-center gap-3 mb-4">
@@ -4890,23 +4891,25 @@
         const initials = (p.name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
         const rows = computePlayerEvolution(p.id);
         const t = rows.reduce((a, r) => ({ min: a.min + r.minutes, gols: a.gols + r.gols, assist: a.assist + r.assist }), { min: 0, gols: 0, assist: 0 });
-        return `<button onclick="openPlayerProfile('${esc(p.id)}')" class="squad-card group relative text-left bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl p-4 hover:border-granate-500/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-granate-950/20 transition-all duration-200 ${baixa ? 'opacity-50' : ''}">
-                <div class="flex items-start justify-between mb-3">
-                    <div class="relative w-12 h-12 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center font-black text-sm text-granate-300 shrink-0">
-                        ${esc(initials)}
-                        ${p.dorsal != null ? `<span class="absolute -bottom-1.5 -right-1.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[9px] font-bold text-slate-200">${esc(p.dorsal)}</span>` : ''}
-                    </div>
-                    <div class="flex flex-col items-end gap-1">
-                        ${p.extern ? `<span class="text-[8px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-600 text-white">CONVIDAT</span>` : ''}
-                        ${baixa ? `<span class="text-[8px] font-bold uppercase tracking-wider text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded">Baixa</span>` : ''}
-                    </div>
+        const badges = `${p.extern ? `<span class="text-[8px] font-extrabold px-1.5 py-0.5 rounded bg-indigo-600 text-white shrink-0">CONVIDAT</span>` : ''}${baixa ? `<span class="text-[8px] font-bold uppercase tracking-wider text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded shrink-0">Baixa</span>` : ''}`;
+        return `<button onclick="openPlayerProfile('${esc(p.id)}')" class="squad-card group relative text-left bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl hover:border-granate-500/40 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-granate-950/20 transition-all duration-200 flex items-center gap-3 p-3 sm:block sm:p-4 ${baixa ? 'opacity-50' : ''}">
+                <div class="relative w-12 h-12 rounded-xl bg-granate-500/10 border border-granate-500/30 flex items-center justify-center font-black text-sm text-granate-300 shrink-0 sm:mb-3">
+                    ${esc(initials)}
+                    ${p.dorsal != null ? `<span class="absolute -bottom-1.5 -right-1.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[9px] font-bold text-slate-200">${esc(p.dorsal)}</span>` : ''}
                 </div>
-                <p class="font-bold text-white text-sm leading-tight truncate group-hover:text-granate-300 transition-colors">${esc(p.name)}</p>
-                <p class="text-[11px] text-slate-500 mt-0.5 truncate">${esc(p.posicio || 'Sense posició')}${age !== null ? ' · ' + age + ' anys' : ''}</p>
-                <div class="grid grid-cols-3 gap-1.5 mt-3 pt-3 border-t border-slate-800/60">
-                    <div class="text-center"><p class="text-xs font-extrabold text-white">${t.min}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">min</p></div>
-                    <div class="text-center"><p class="text-xs font-extrabold text-emerald-400">${t.gols}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">gols</p></div>
-                    <div class="text-center"><p class="text-xs font-extrabold text-sky-400">${t.assist}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">assist</p></div>
+                <div class="flex-1 min-w-0 sm:flex-none">
+                    <div class="flex items-center gap-1.5 sm:hidden">
+                        <p class="font-bold text-white text-[15px] leading-tight truncate group-hover:text-granate-300 transition-colors">${esc(p.name)}</p>
+                        ${badges}
+                    </div>
+                    <p class="hidden sm:block font-bold text-white text-sm leading-tight truncate group-hover:text-granate-300 transition-colors">${esc(p.name)}</p>
+                    <div class="hidden sm:flex sm:flex-col sm:items-end sm:gap-1 sm:absolute sm:top-4 sm:right-4">${badges}</div>
+                    <p class="text-[11px] text-slate-500 mt-0.5 truncate">${esc(p.posicio || 'Sense posició')}${age !== null ? ' · ' + age + ' anys' : ''}</p>
+                </div>
+                <div class="flex gap-4 shrink-0 sm:grid sm:grid-cols-3 sm:gap-1.5 sm:mt-3 sm:pt-3 sm:border-t sm:border-slate-800/60 sm:w-full">
+                    <div class="text-center"><p class="text-[13px] sm:text-xs font-extrabold text-white">${t.min}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">min</p></div>
+                    <div class="text-center"><p class="text-[13px] sm:text-xs font-extrabold text-emerald-400">${t.gols}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">gols</p></div>
+                    <div class="text-center"><p class="text-[13px] sm:text-xs font-extrabold text-sky-400">${t.assist}</p><p class="text-[8px] text-slate-500 uppercase tracking-wide">assist</p></div>
                 </div>
             </button>`;
     }
@@ -4920,7 +4923,7 @@
 
         grid.innerHTML = orderedKeys.map(k => `<div class="squad-pos-group">
                 <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2.5">${esc(k)} <span class="text-slate-600 normal-case font-medium">· ${groups[k].length}</span></p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
                     ${groups[k].map(squadCardHTML).join('')}
                 </div>
             </div>`).join('');
