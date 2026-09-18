@@ -330,16 +330,21 @@
     </div>
 
     <!-- ===== VISTA D'UN SOL CLUB (administrador) — nomes els seus equips ===== -->
-    <div id="admin-club-view" class="hidden fixed inset-0 z-[1001] bg-slate-950 flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
-        <div class="w-full max-w-2xl py-10">
-            <button onclick="closeAdminClubView()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white mb-6"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>Tornar al panell</button>
-            <div class="flex items-center gap-3 mb-6">
-                <div id="admin-club-view-crest" class="w-11 h-11 flex items-center justify-center text-[9px] text-slate-500 shrink-0">Escut</div>
-                <div>
-                    <h1 id="admin-club-view-nom" class="text-xl font-bold"></h1>
-                    <p class="text-sm text-slate-400">Tria l'equip on vols entrar</p>
+    <div id="admin-club-view" class="hidden fixed inset-0 z-[1001] bg-[#08090b] flex items-start justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="pointer-events-none fixed inset-x-0 top-0 h-[600px]">
+            <div class="absolute inset-0" style="background: linear-gradient(160deg, rgba(153,36,56,0.18) 0%, transparent 55%);"></div>
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full bg-granate-600/12 blur-[120px]"></div>
+        </div>
+        <div class="relative w-full max-w-2xl py-12">
+            <button onclick="closeAdminClubView()" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white mb-8"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>Tornar al panell</button>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3.5">
+                    <div id="admin-club-view-crest" class="w-12 h-12 flex items-center justify-center text-[9px] text-slate-500 shrink-0">Escut</div>
+                    <h1 id="admin-club-view-nom" class="text-[30px] font-extrabold tracking-tight text-white"></h1>
                 </div>
+                <button onclick="appSignOut()" title="Tanca sessió" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-400 hover:bg-slate-900 transition-colors"><i data-lucide="log-out" class="w-4 h-4"></i></button>
             </div>
+            <p class="text-[15px] text-slate-400 mb-9">Tria l'equip on vols entrar.</p>
             <div id="admin-club-view-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </div>
     </div>
@@ -14529,9 +14534,9 @@
             crest.innerHTML = club.escut ? `<img src="${club.escut}" class="w-full h-full object-contain">` : 'Escut';
             const grid = document.getElementById('admin-club-view-grid');
             grid.innerHTML = club.equips.map(e => `
-                <button onclick='adminEnterEquip(${JSON.stringify(e.equip_id)}, ${JSON.stringify(e.equip_nom)}, ${JSON.stringify(club.id)}, ${JSON.stringify(club.nom)}, ${JSON.stringify(club.escut)})' class="text-left bg-slate-900 border border-slate-800 hover:border-granate-500 rounded-2xl p-5 transition-all">
-                    <p class="font-bold text-white text-sm">${e.equip_nom}</p>
-                    <p class="text-xs text-slate-400 mt-1">${e.membres_count} jugador${e.membres_count === 1 ? '' : 's'}</p>
+                <button onclick='adminEnterEquip(${JSON.stringify(e.equip_id)}, ${JSON.stringify(e.equip_nom)}, ${JSON.stringify(club.id)}, ${JSON.stringify(club.nom)}, ${JSON.stringify(club.escut)})' class="text-left bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] hover:shadow-[0_12px_32px_-14px_rgba(0,0,0,0.7)] rounded-2xl p-5 transition-all hover:-translate-y-0.5">
+                    <p class="font-bold text-white text-[15px] tracking-tight">${e.equip_nom}</p>
+                    <p class="text-[13px] text-slate-400 mt-1">${e.membres_count} jugador${e.membres_count === 1 ? '' : 's'}</p>
                 </button>`).join('') || '<p class="text-xs text-slate-500 col-span-full">Aquest club encara no té cap equip.</p>';
             document.getElementById('admin-club-view').classList.remove('hidden');
             lucide.createIcons();
