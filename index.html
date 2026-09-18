@@ -1951,7 +1951,7 @@
                     </div>
                 </div>
 
-                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Moments destacats</h4>
@@ -1965,7 +1965,7 @@
                     <div id="markers-list" class="divide-y divide-slate-800/60"></div>
                 </div>
 
-                <div class="coach-only bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
+                <div class="bg-slate-900/80 shadow-[0_8px_24px_-14px_rgba(0,0,0,0.55)] rounded-2xl overflow-hidden">
                     <div class="p-6 border-b border-slate-800 flex items-center justify-between gap-3">
                         <div>
                             <h4 class="font-bold text-white text-base">Partits arxivats</h4>
@@ -1974,18 +1974,6 @@
                         <span id="archives-count" class="shrink-0 text-xs font-bold text-slate-400"></span>
                     </div>
                     <div id="archives-list"></div>
-                </div>
-
-                <!-- Vista de jugador: galeria visual dels seus moments per partit -->
-                <div class="player-only">
-                    <div class="flex items-center justify-between gap-3 mb-1">
-                        <div>
-                            <h4 class="font-bold text-white text-base">Els teus moments</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Els partits arxivats on hi surts implicat, amb els moments marcats.</p>
-                        </div>
-                        <span id="pv-gallery-badge" class="shrink-0 text-xs font-bold text-granate-400 bg-granate-500/10 px-2.5 py-1 rounded"></span>
-                    </div>
-                    <div id="pv-video-gallery" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4"></div>
                 </div>
             </section>
 
@@ -9064,7 +9052,7 @@
     function openPlayerMoment(i) {
         const it = pmMoments[i]; if (!it) return;
         if (!it.link) { toast('Aquest moment no té enllaç.'); return; }
-        window.open(it.link, '_blank', 'noopener');
+        openVideoMoment(it.link, it.mk);
     }
 
     /* -------------------- Galeria visual de vídeo (jugador) -------------------- */
@@ -10610,6 +10598,38 @@
     function markerLink(mk) { return effectiveLink(mk.link, ensureVideo().url, mk.t); }
     const setHidden = (id, cond) => { const el = document.getElementById(id); if (el) el.classList.toggle('hidden', !!cond); };
 
+    // Etiqueta curta per identificar un moment quan s'obre en una pestanya
+    // pròpia (minut · títol · categoria · jugadors), la mateixa informació
+    // que ja es mostra a les llistes.
+    function momentLabel(mk) {
+        if (!mk) return 'Moment';
+        const cat = VIDEO_CATS[mk.cat] || VIDEO_CATS.altre;
+        const secs = mk.t || parseYouTubeTime(mk.link) || 0;
+        const tl = secs ? fmtTime(secs) : '';
+        const names = (mk.players || []).map(mkName).filter(Boolean).join(', ');
+        return [tl, mk.title || 'Moment', cat.label, names].filter(Boolean).join(' · ');
+    }
+
+    // Obre un moment en una pestanya pròpia, en pausa i al segon exacte (en
+    // lloc del reproductor normal de YouTube, que arrenca sol) — així es
+    // poden obrir tots els talls d'una tirada sense haver-los d'anar
+    // aturant un per un. El títol de la pestanya identifica el moment
+    // (minut, títol, categoria i jugadors), per distingir-los un cop
+    // oberts en pestanyes diferents del navegador.
+    function openVideoMoment(link, mk) {
+        if (!link) { toast('Aquest moment no té enllaç.'); return; }
+        const id = parseYouTubeId(link);
+        if (!id) { window.open(link, '_blank', 'noopener'); return; }
+        const secs = Math.max(0, Math.floor(parseYouTubeTime(link) || 0));
+        const embedUrl = 'https://www.youtube.com/embed/' + id + '?start=' + secs + '&autoplay=0&rel=0';
+        const w = window.open('', '_blank', 'noopener');
+        if (!w) { window.open(link, '_blank', 'noopener'); return; }
+        w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(momentLabel(mk)) +
+            '</title><style>html,body{margin:0;height:100%;background:#000;}iframe{position:fixed;inset:0;width:100%;height:100%;border:0;}</style>' +
+            '</head><body><iframe src="' + embedUrl + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></body></html>');
+        w.document.close();
+    }
+
     function setVideoFromInput() {
         const url = document.getElementById('video-url').value.trim();
         ensureVideo().url = url;
@@ -10672,7 +10692,7 @@
         if (!mk) return;
         const link = markerLink(mk);
         if (!link) { toast('Aquest moment no té enllaç; edita el moment per afegir-ne un.'); return; }
-        window.open(link, '_blank', 'noopener');
+        openVideoMoment(link, mk);
     }
 
     function addMarker() {
@@ -10811,7 +10831,7 @@
         if (!presSet.length) return;
         const link = presLink(presSet[presIdx]);
         if (!link) { toast('Aquest moment no té enllaç.'); return; }
-        window.open(link, '_blank', 'noopener');
+        openVideoMoment(link, presSet[presIdx]);
     }
 
     /* --- partits arxivats --- */
@@ -10894,7 +10914,7 @@
         const mk = (a.markers || []).find(x => x.id === mkid); if (!mk) return;
         const link = archiveMarkerLink(aid, mk);
         if (!link) { toast('Aquest moment no té enllaç.'); return; }
-        window.open(link, '_blank', 'noopener');
+        openVideoMoment(link, mk);
     }
     function toggleArchive(id) { expandedArchive = (expandedArchive === id) ? null : id; renderArchives(); }
     function presentArchive(id) {
