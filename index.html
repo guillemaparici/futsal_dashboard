@@ -10622,7 +10622,11 @@
         if (!id) { window.open(link, '_blank', 'noopener'); return; }
         const secs = Math.max(0, Math.floor(parseYouTubeTime(link) || 0));
         const embedUrl = 'https://www.youtube.com/embed/' + id + '?start=' + secs + '&autoplay=0&rel=0';
-        const w = window.open('', '_blank', 'noopener');
+        // Sense "noopener": aquí SÍ que necessitem la referència a la
+        // finestra nova per poder-hi escriure el reproductor a dins. No hi
+        // ha cap risc de seguretat perquè el contingut que hi escrivim és
+        // nostre, no ve de fora.
+        const w = window.open('', '_blank');
         if (!w) { window.open(link, '_blank', 'noopener'); return; }
         w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>' + esc(momentLabel(mk)) +
             '</title><style>html,body{margin:0;height:100%;background:#000;}iframe{position:fixed;inset:0;width:100%;height:100%;border:0;}</style>' +
